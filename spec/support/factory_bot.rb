@@ -1,5 +1,4 @@
 require 'factory_bot'
-require 'faker'
 
 FactoryBot.define do
   factory :user do
@@ -9,4 +8,14 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
   end
+
+  factory :event do
+    event_name { Faker::FunnyName.three_word_name }
+    event_description { Faker::Lorem.paragraph(sentence_count: 3) }
+    event_date { Faker::Date.in_date_period }
+    rsvp_date { Faker::Date.in_date_period }
+
+    user
+  end
+
 end
