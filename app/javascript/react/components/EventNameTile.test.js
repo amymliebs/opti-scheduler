@@ -14,6 +14,7 @@ describe ("EventNameTile", () => {
       <BrowserRouter>
         <EventNameTile
           eventName="July 26th Check-In"
+          rsvpStatus="schedule pending"
           id="32"
         />
       </BrowserRouter>
@@ -22,6 +23,10 @@ describe ("EventNameTile", () => {
 
   it("visitor goes to index page sees a list of parks", () => {
     expect(wrapper.find('.event-name').text()).toBe("July 26th Check-In")
+  })
+
+  it("visitor goes to index page sees a list of parks", () => {
+    expect(wrapper.find('.rsvp-status').text()).toBe("schedule pending")
   })
 
   it("should render a link to /parks", () => {

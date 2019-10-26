@@ -31,6 +31,7 @@ const EventIndex = (props) => {
         key={event.id}
         id={event.id}
         eventName={event.eventName}
+        rsvpStatus={event.rsvpStatus}
       />
     )
   })

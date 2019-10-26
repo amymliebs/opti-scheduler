@@ -5,6 +5,7 @@ const EventNameTile = (props) => {
   return(
     <Link to={`/events/${props.id}`}>
       <div className="event-name">{props.eventName}</div>
+    <div className="rsvp-status">{props.rsvpStatus}</div>
     </Link>
   )
 }
