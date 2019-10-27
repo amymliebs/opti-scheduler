@@ -20,6 +20,6 @@ class Api::V1::EventsController < ApiController
   private
 
   def event_params
-    params.require(:event).permit(:event_name, :event_description, :event_date, :rsvp_date)
+    params.require(:event).permit(:event_name, :event_description, :event_date, :rsvp_date, :user_id)
   end
 end
