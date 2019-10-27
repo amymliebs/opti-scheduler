@@ -5,26 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 </head>
 <body>
-  
-  <nav class="top-bar">
-    <h1><a href="/">OptiScheduler</a></h1>
 
-    <section class="top-bar-section">
-      <ul class="right">
+  <nav id="nav-bar">
+    <div class="ui inverted segment">
+      <div class="ui inverted secondary pointing menu">
+        <a href="/" class="active item">
+          OptiScheduler
+        </a>
         <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <a class="item">
+            My Event Windows
+          </a>
+          <a class="item">
+            Create an Event Window
+          </a>
+          <div class="right item">
+            <a class="item">
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+            </a>
+          </div>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <div class="right item">
+            <a class="item">
+              <%= link_to 'Sign In', new_user_session_path %>
+            </a>
+            <a class="item">
+              <%= link_to 'Sign Up', new_user_registration_path %>
+            </a>
+          </div>
         <%- end -%>
-      </ul>
-    </section>
+      </div>
+    </div>
   </nav>
 
   <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
+    <div id="flash-message" class="flash flash-<%= key %>">
       <%= value %>
     </div>
   <%- end -%>
@@ -32,14 +50,14 @@
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
-  
-  <%- if Rails.env.development? || Rails.env.test? -%> 
+
+  <%- if Rails.env.development? || Rails.env.test? -%>
     <%= javascript_tag do %>
       window.railsEnv = '<%= Rails.env %>'
     <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
-  
+
   <%= yield :extra_footer %>
 </body>
 </html>

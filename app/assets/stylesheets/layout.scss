@@ -1,0 +1,12 @@
+$primary-color: black;
+$secondary-color: pink;
+$dark-gray: #333839;
+$light-gray: #D7D8D8;
+
+#flash-message {
+  padding: 10px;
+  background-color: $light-gray;
+  border: 2px solid $dark-gray;
+  text-align: center;
+  color: maroon;
+}
