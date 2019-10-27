@@ -38,7 +38,7 @@ const EventIndex = (props) => {
 
   return (
     <div>
-      <h3>My Events</h3>
+      <h3 className="primary-header">My Event Windows</h3>
       {eventTiles}
     </div>
   )

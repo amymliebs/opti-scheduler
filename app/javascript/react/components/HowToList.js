@@ -2,17 +2,28 @@ import React from 'react'
 
 const HowToList = (props) => {
   return (
-    <div>
-      <div>
-        Schedule Your Event Window
+    <div id="how-to-boxes">
+      <div className="ui grid">
+        <div className="how-to-box four wide column" id="how-to-one">
+          Schedule Your Event Window
+          <img className="preview-image"></img>
+        </div>
+        <div className="how-to-box four wide column" id="how-to-two">
+          Attendees RSVP with Availabilities
+          <img className="preview-image"></img>
+        </div>
+        <div className="how-to-box four wide column" id="how-to-three">
+          OptiScheduler Makes Your Schedule!
+          <img className="preview-image"></img>
+        </div>
       </div>
-      <div>
-        Attendees RSVP with Availabilities
-      </div>
-      <div>
-        OptiScheduler Makes Your Schedule!
-      </div>
-      <h6>Get Started</h6>
+      <button className="primary-button">Get Started!</button>
+      <p>Alread a user? &ensp;
+        <a href="/users/sign_in">
+          Log In
+        </a>
+      </p>
+
     </div>
   )
 }
