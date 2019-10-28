@@ -1,4 +1,5 @@
 @import './colors';
+//= depend_on_asset "welcome-background.jpg"
 
 #welcome-page {
   background: url('welcome-background.jpg');

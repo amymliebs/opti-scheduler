@@ -14,6 +14,7 @@ FactoryBot.define do
     event_description { Faker::Lorem.paragraph(sentence_count: 3) }
     event_date { Faker::Date.in_date_period }
     rsvp_date { Faker::Date.in_date_period }
+    invitees { 'fakeemail@fakeemail.com' }
 
     user
   end

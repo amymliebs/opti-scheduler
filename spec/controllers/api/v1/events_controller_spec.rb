@@ -34,6 +34,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
     it "should successfully post when all required fields are filled in" do
       sign_in user1
       prev_count = Event.count
+      ActionMailer::Base.deliveries = []
 
       event3 = { event: {
         event_name: "Tuesday, November 12 Check-Ins",
@@ -54,6 +55,9 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(returned_json["event_date"]).to eq event3[:event][:event_date]
       expect(returned_json["rsvp_date"]).to eq event3[:event][:rsvp_date]
       expect(Event.count).to eq(prev_count + 1)
+
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
+      last_email = ActionMailer::Base.deliveries.last
     end
 
     it "should not post when all required fields are not filled in" do
@@ -77,6 +81,13 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
       expect(returned_json["event_name"]).to eq event4["can't be blank"]
       expect(Event.count).to eq(prev_count)
+    end
+
+    it 'sends an invitation email' do
+      ActionMailer::Base.deliveries = []
+      FactoryBot.create(:event, user_id: user1.id)
+
+      expect(ActionMailer::Base.deliveries.size.to eq(1))
     end
   end
 end

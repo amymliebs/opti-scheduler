@@ -11,7 +11,8 @@ const NewEventForm = (props) => {
     eventName: "",
     eventDescription: "",
     eventDate: "",
-    rsvpDate: ""
+    rsvpDate: "",
+    invitees: ""
   })
 
   const handleFieldChange = (event) => {
@@ -27,7 +28,8 @@ const NewEventForm = (props) => {
       eventName: "",
       eventDescription: "",
       eventDate: "",
-      rsvpDate: ""
+      rsvpDate: "",
+      invitees: ""
     })
     setErrors({})
   }
@@ -57,7 +59,8 @@ const NewEventForm = (props) => {
       eventName: newEvent.eventName,
       eventDescription: newEvent.eventDescription,
       eventDate: newEvent.eventDate,
-      rsvpDate: newEvent.rsvpDate
+      rsvpDate: newEvent.rsvpDate,
+      invitees: newEvent.invitees
     }
 
     addNewEvent(payload)
@@ -65,7 +68,8 @@ const NewEventForm = (props) => {
       eventName: "",
       eventDescription: "",
       eventDate: "",
-      rsvpDate: ""
+      rsvpDate: "",
+      invitees: ""
     })
   }
 
@@ -138,6 +142,16 @@ const NewEventForm = (props) => {
             type="date"
             min="2019-11-01"
             onChange={handleFieldChange}
+          />
+        </label>
+
+        <label> Guests
+          <textarea
+            name="invitees"
+            rows="5"
+            value={newEvent.invitees}
+            onChange={handleFieldChange}
+            placeholder="List the email addresses of your guests, separated by commas."
           />
         </label>
 
