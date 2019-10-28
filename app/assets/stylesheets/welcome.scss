@@ -1,8 +1,7 @@
 @import './colors';
-//= depend_on_asset "welcome-background.jpg"
 
 #welcome-page {
-  background: url('welcome-background.jpg');
+  background: image-url('welcome-background.jpg');
   min-width: 100%;
   min-height: 100vh;
   background-repeat: no-repeat;
