@@ -7,7 +7,7 @@ const HowToList = (props) => {
         <div className="four wide column">
         </div>
         <div className="how-to-box three wide column" id="how-to-one">
-          <div className="secondary-header">Schedule Your Event Window</div>
+          <div className="secondary-header">Create Your Event Window</div>
           <img className="preview-image"></img>
         </div>
         <div className="how-to-box three wide column" id="how-to-two">

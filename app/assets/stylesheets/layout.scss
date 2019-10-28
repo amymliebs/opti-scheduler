@@ -1,7 +1,4 @@
-$primary-color: black;
-$secondary-color: pink;
-$dark-gray: #333839;
-$light-gray: #D7D8D8;
+@import './colors';
 
 #flash-message {
   padding: 10px;
