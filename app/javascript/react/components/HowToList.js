@@ -17,7 +17,7 @@ const HowToList = (props) => {
           <img className="preview-image"></img>
         </div>
       </div>
-      <button className="primary-button">Get Started!</button>
+      <a className="attention-button" href="/users/sign_up">Get Started!</a>
       <p>Alread a user? &ensp;
         <a href="/users/sign_in">
           Log In
