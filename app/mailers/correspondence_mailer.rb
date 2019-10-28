@@ -1,6 +1,7 @@
 class CorrespondenceMailer < ApplicationMailer
-  def invitation_email(event)
+  def invitation_email(event, user)
     emails_array = event.invitees.split
+    @event = event
     @user = event.user
 
     emails_array.each do |email|
