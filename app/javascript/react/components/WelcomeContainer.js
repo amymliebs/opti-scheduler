@@ -7,11 +7,11 @@ const WelcomeContainer = (props) => {
     <div id='welcome-page'>
       <HowToList
       />
-    <Link to="/users/sign_up" className="primary-button">Get Started!</Link>
-      <p>Alread a user? &ensp;
-        <a href="/users/sign_in">
-          Log In
-        </a>
+      <a className="attention-button" href="/users/sign_up">Get Started!</a>
+      <p className="user-question">Alread a user? &ensp;
+      <a className="underline" href="/users/sign_in">
+        Log In
+      </a>
       </p>
     </div>
   )

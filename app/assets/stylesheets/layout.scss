@@ -9,14 +9,17 @@ $light-gray: #D7D8D8;
   border: 2px solid $dark-gray;
   text-align: center;
   color: maroon;
-  margin-top: 20px;
 }
 
 .red-alert {
-  padding: 10px;
+  padding: 15px;
   background-color: #E3B8B3;
   border: 2px solid #912113;
   color: black;
   width: 350px;
   margin-bottom: 30px
+}
+
+.underline {
+  text-decoration: underline;
 }

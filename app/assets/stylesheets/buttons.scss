@@ -2,8 +2,8 @@ $primary-color: black;
 $secondary-color: pink;
 $dark-gray: #333839;
 $light-gray: #D7D8D8;
-$button-blue: #1B77D3;
-$hover-blue: #2B90F5;
+$button-blue: #2B90F5;
+$hover-blue: #1B77D3;
 
 
 .primary-button {
@@ -11,7 +11,7 @@ $hover-blue: #2B90F5;
 }
 
 .attention-button {
-  margin-top: 3em;
+  margin-top: 4em;
   background-color: $button-blue;
   border-radius: 90px;
   color: white;
@@ -20,16 +20,11 @@ $hover-blue: #2B90F5;
   border: 3px solid $light-gray;
   padding: 1em;
   text-align: center;
-  width: 300px;
-  margin-right: 33%
-}
-
-.button {
-
+  width: 330px;
+  margin-right: 25%
 }
 
 .attention-button:hover {
   background-color: $hover-blue;
   color: #F4F0E4;
-  margin-bottom: 30px;
 }
