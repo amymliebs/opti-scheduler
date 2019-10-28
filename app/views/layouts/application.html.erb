@@ -6,20 +6,22 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/991578b948.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
   <nav id="nav-bar">
     <div class="ui inverted segment">
       <div class="ui inverted secondary pointing menu">
-        <a href="/" class="active item">
-          OptiScheduler
+        <a href="/" id="site-title" class="active item">
+          <i class="far fa-clock"></i>ptiScheduler
         </a>
         <%- if current_user -%>
-          <a class="item">
+          <a class="item" href="/events">
             My Event Windows
           </a>
-          <a class="item">
+          <a class="item" href="/events/new">
             Create an Event Window
           </a>
           <div class="right item">

@@ -2,10 +2,11 @@ $primary-color: black;
 $secondary-color: pink;
 $dark-gray: #333839;
 $light-gray: #D7D8D8;
+$homepage-yellow: #F7BE00;
 
 .logins {
-  background-color: #F4F0E4;
-  color: #444B6E;
+  background-color: $dark-gray;
+  color: white;
   margin: 8em auto;
   width: 800px;
   border-radius: 10px;

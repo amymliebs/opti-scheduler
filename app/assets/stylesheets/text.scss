@@ -3,6 +3,10 @@ $secondary-color: pink;
 $dark-gray: #333839;
 $light-gray: #D7D8D8;
 
+#site-title {
+  font-size: 20px
+}
+
 .primary-header {
   text-align: center;
   font-size: 40px;
@@ -15,7 +19,13 @@ $light-gray: #D7D8D8;
 }
 
 .secondary-header {
-
+  text-align: center;
+  font-size: 36px;
+  padding: 10px;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 500;
+  line-height: normal;
+  color: $dark-gray;
 }
 
 .secondary-subheader {
