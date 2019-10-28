@@ -5,10 +5,11 @@ class Api::V1::EventsController < ApiController
 
   def create
     @event = Event.new(event_params)
-    @user = current_user
+    @event.user = current_user
+    @user = @event.user
 
     if @event.save
-      CorrespondenceMailer.invitation_email(@event).deliver_now
+      CorrespondenceMailer.invitation_email(@event, @user).deliver_now
       render json: @event
     else
       render json: {

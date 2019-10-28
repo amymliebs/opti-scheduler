@@ -2,13 +2,13 @@
     <h2 class="secondary-header">OptiScheduler</h2>
     <br />
     <div>
-      <%= @user.first_name %> <%= @user.last_name %> has invited you to reply to an event on OptiScheduler.
+      <%= @user["first_name"] %> <%= @user["last_name"] %> has invited you to reply to an event on OptiScheduler.
     </div>
     <br />
     <div>
       <span>Event name:  <%= @event.event_name %></span>
       <br />
-      <span>Event host:  <%= @user.first_name %> <%= @user.last_name %></span>
+      <span>Event host:  <%= @user["first_name"] %> <%= @user["last_name"] %></span>
       <br />
       <span>Event date:  <%= @event.event_date %></span>
       <br />

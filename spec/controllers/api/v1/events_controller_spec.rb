@@ -51,10 +51,12 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
+
       expect(returned_json["event_name"]).to eq event3[:event][:event_name]
       expect(returned_json["event_description"]).to eq event3[:event][:event_description]
       expect(returned_json["event_date"]).to eq event3[:event][:event_date]
       expect(returned_json["rsvp_date"]).to eq event3[:event][:rsvp_date]
+      expect(returned_json["invitees"]).to eq event3[:event][:invitees]
       expect(Event.count).to eq(prev_count + 1)
 
       expect(ActionMailer::Base.deliveries.size).to eq(1)
