@@ -5,7 +5,7 @@ class Api::V1::EventsController < ApiController
 
   def create
     @event = Event.new(event_params)
-    @event.user = current_user
+    @user = current_user
 
     if @event.save
       CorrespondenceMailer.invitation_email(@event).deliver_now

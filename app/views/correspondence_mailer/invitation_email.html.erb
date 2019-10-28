@@ -1,6 +1,25 @@
-<h1>This is your invitation email</h1>
-<h1>Welcome to example.com, <%= @user.first_name %></h1>
-  <p>
-    You have successfully signed up to example.com.
-  </p>
-<p>Thanks for joining and have a great day!</p>
+<div class="body-text">
+    <h2 class="secondary-header">OptiScheduler</h2>
+    <br />
+    <div>
+      <%= @user.first_name %> <%= @user.last_name %> has invited you to reply to an event on OptiScheduler.
+    </div>
+    <br />
+    <div>
+      <span>Event name:  <%= @event.event_name %></span>
+      <br />
+      <span>Event host:  <%= @user.first_name %> <%= @user.last_name %></span>
+      <br />
+      <span>Event date:  <%= @event.event_date %></span>
+      <br />
+      <span>Description:  <%= @event.event_description %></span>
+    </div>
+    <br />
+    <br />
+    <div>
+      <span>Please RSVP with all times you are available by <%= @event.rsvp_date %>. You will be notified via email of a time that works well for both you and your event host.</span>
+      <br/>
+      <span> The sooner you RSVP, the more likely we are to find a time that work well for both of you!</span>
+    </div>
+    <h4 className="centered">Click here to RSVP here.</h4>
+</div>

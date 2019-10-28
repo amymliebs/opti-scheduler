@@ -19,7 +19,7 @@
   text-align: center;
   font-size: 36px;
   padding: 10px;
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: 500;
   line-height: normal;
   color: $dark-gray;
@@ -35,4 +35,12 @@
 
 .label-subtext {
 
+}
+
+.body-text {
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.centered {
+  text-align: center;
 }
