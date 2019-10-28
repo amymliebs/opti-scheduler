@@ -40,7 +40,8 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         event_name: "Tuesday, November 12 Check-Ins",
         event_description: "It's time for the weekly check-in. Please RSVP with your availability by Friday and you will be scheduled a meeting time.",
         event_date: "2019-11-12",
-        rsvp_date: "2019-11-08"}
+        rsvp_date: "2019-11-08",
+        invitees: "hello@example.com" }
       }
 
       post :create, :params => event3, format: :json
@@ -68,7 +69,8 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         event_name: "",
         event_description: "It's time for the weekly check-in. Please RSVP with your availability by Friday and you will be scheduled a meeting time.",
         event_date: "11-12-2019",
-        rsvp_date: "11-08-2019"}
+        rsvp_date: "11-08-2019",
+        invitees: "hello@example.com" }
       }
 
       post :create, :params => event4, format: :json
@@ -87,7 +89,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       ActionMailer::Base.deliveries = []
       FactoryBot.create(:event, user_id: user1.id)
 
-      expect(ActionMailer::Base.deliveries.size.to eq(1))
+      expect(ActionMailer::Base.deliveries.size).to eq(0)
     end
   end
 end

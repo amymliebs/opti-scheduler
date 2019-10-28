@@ -8,7 +8,7 @@ class Api::V1::EventsController < ApiController
     @event.user = current_user
 
     if @event.save
-      InviteMailer.invitation_email(@event).deliver_now
+      CorrespondenceMailer.invitation_email(@event).deliver_now
       render json: @event
     else
       render json: {

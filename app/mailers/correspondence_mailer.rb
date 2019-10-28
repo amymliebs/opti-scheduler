@@ -1,9 +1,4 @@
-class InviteMailer < ApplicationMailer
-  def welcome_email(user)
-    @user = user
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
-  end
-
+class CorrespondenceMailer < ApplicationMailer
   def invitation_email(event)
     emails_array = event.invitees.split
     @user = event.user
