@@ -1,8 +1,14 @@
-$primary-color: black;
-$secondary-color: pink;
-$dark-gray: #333839;
-$light-gray: #D7D8D8;
-$homepage-yellow: #F7BE00;
+@import './colors';
+
+.login-background {
+  background: url('organized-desk.jpg');
+  min-width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+}
 
 .logins {
   background-color: $dark-gray;

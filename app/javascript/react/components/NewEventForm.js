@@ -128,6 +128,7 @@ const NewEventForm = (props) => {
           <input
             type="date"
             min="2019-11-01"
+            value={newEvent.eventDate}
             onChange={handleFieldChange}
           />
         </label>
