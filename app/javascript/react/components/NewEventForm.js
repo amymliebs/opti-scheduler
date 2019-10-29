@@ -4,11 +4,16 @@ import humps from 'humps'
 import _ from 'lodash'
 import DatePicker from "react-datepicker"
 import ErrorList from "./ErrorList"
+import Timeslots from "../data/Timeslots.js"
+// import Beluga from "../data/Beluga.js"
+import CheckboxGroup from 'react-checkbox-group'
+
 
 const NewEventForm = (props) => {
   const reset = {
     eventName: "",
     eventDescription: "",
+    location: "",
     eventDate: eventDate,
     rsvpDate: rsvpDate,
     invitees: ""
@@ -19,6 +24,7 @@ const NewEventForm = (props) => {
   const[eventDate, setEventDate] = useState(new Date())
   const[rsvpDate, setRsvpDate] = useState(new Date())
   const[newEvent, setNewEvent] = useState(reset)
+  const[timeslots, setTimeslots] = useState([])
 
   const handleFieldChange = (event) => {
     setNewEvent({
@@ -35,7 +41,7 @@ const NewEventForm = (props) => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["eventName", "eventDescription"]
+    const requiredFields = ["eventName"]
     requiredFields.forEach(field => {
       if (newEvent[field].trim() === "") {
         submitErrors = {
@@ -48,18 +54,21 @@ const NewEventForm = (props) => {
     return _.isEmpty(submitErrors)
   }
 
-  const handleEventSubmit = (event) =>{
-    event.preventDefault()
+  const handleEventSubmit = (action) =>{
+    action.preventDefault()
     if (!validForSubmission()){
       return
     }
 
-    let payload = {
+    let payload = { event: {
       eventName: newEvent.eventName,
       eventDescription: newEvent.eventDescription,
+      location: newEvent.location,
       eventDate: eventDate,
       rsvpDate: rsvpDate,
-      invitees: newEvent.invitees
+      invitees: newEvent.invitees},
+      timeslot: {
+      times: timeslots}
     }
 
     addNewEvent(payload)
@@ -102,12 +111,21 @@ const NewEventForm = (props) => {
       <form onSubmit={handleEventSubmit}>
         <ErrorList errors={errors} />
 
-        <label> Event Window Name
+        <label> Event Window Name *
           <input
             name="eventName"
             type="text"
             onChange={handleFieldChange}
             value={newEvent.eventName}
+          />
+        </label>
+
+        <label> Location
+          <input
+            name="location"
+            type="text"
+            onChange={handleFieldChange}
+            value={newEvent.location}
           />
         </label>
 
@@ -150,6 +168,11 @@ const NewEventForm = (props) => {
             placeholder="List the email addresses of your guests, separated by commas."
           />
         </label>
+
+        <Timeslots
+          timeslots={timeslots}
+          setTimeslots={setTimeslots}
+        />
 
         <input type="submit" value="Send Invitations!"/>
       </form>
