@@ -16,6 +16,10 @@ RSpec.describe Api::V1::EventsController, type: :controller do
     FactoryBot.create(:event, user_id: user2.id)
   }
 
+  let!(:timeslot1) {
+    FactoryBot.create(:timeslot, event_id: event1.id )
+  }
+
   describe "GET#index" do
     it "should return a list of the user's events" do
       get :index
@@ -42,11 +46,14 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         event_date: "2019-11-12",
         rsvp_date: "2019-11-08",
         invitees: "hello@example.com",
-        location: 'room 221'}
-      }
+        location: 'room 221'},
+        timeslot: {
+          times: ['9:00-10:00am', '3:00-4:00pm']}
+        }
 
       post :create, :params => event3, format: :json
       returned_json = JSON.parse(response.body)
+
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
 
@@ -59,6 +66,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(returned_json["rsvp_date"]).to eq event3[:event][:rsvp_date]
       expect(returned_json["invitees"]).to eq event3[:event][:invitees]
       expect(returned_json["location"]).to eq event3[:event][:location]
+
       expect(Event.count).to eq(prev_count + 1)
 
       expect(ActionMailer::Base.deliveries.size).to eq(1)
@@ -69,12 +77,18 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       sign_in user1
       prev_count = Event.count
 
-      event4 = { event: {
-        event_name: "",
-        event_description: "It's time for the weekly check-in. Please RSVP with your availability by Friday and you will be scheduled a meeting time.",
-        event_date: "11-12-2019",
-        rsvp_date: "11-08-2019",
-        invitees: "hello@example.com" }
+      event4 = {
+        event: {
+          event_name: "",
+          event_description: "It's time for the weekly check-in. Please RSVP with your availability by Friday and you will be scheduled a meeting time.",
+          event_date: "11-12-2019",
+          rsvp_date: "11-08-2019",
+          invitees: "hello@example.com",
+          location: 'room 221'
+        },
+        timeslot: {
+          times: ['9:00-10:00am', '3:00-4:00pm']
+        }
       }
 
       post :create, :params => event4, format: :json
