@@ -6,17 +6,19 @@ import DatePicker from "react-datepicker"
 import ErrorList from "./ErrorList"
 
 const NewEventForm = (props) => {
-  const[errors, setErrors]= useState({})
-  const[shouldRedirect, setShouldRedirect] = useState(false)
-  const[eventDate, setEventDate] = useState(new Date())
-  const[rsvpDate, setRsvpDate] = useState(new Date())
-  const[newEvent, setNewEvent] = useState({
+  const reset = {
     eventName: "",
     eventDescription: "",
     eventDate: eventDate,
     rsvpDate: rsvpDate,
     invitees: ""
-  })
+  }
+
+  const[errors, setErrors]= useState({})
+  const[shouldRedirect, setShouldRedirect] = useState(false)
+  const[eventDate, setEventDate] = useState(new Date())
+  const[rsvpDate, setRsvpDate] = useState(new Date())
+  const[newEvent, setNewEvent] = useState(reset)
 
   const handleFieldChange = (event) => {
     setNewEvent({
@@ -27,13 +29,7 @@ const NewEventForm = (props) => {
 
   const clearFields = (event) => {
     event.preventDefault()
-    setNewEvent({
-      eventName: "",
-      eventDescription: "",
-      eventDate: eventDate,
-      rsvpDate: rsvpDate,
-      invitees: ""
-    })
+    setNewEvent(reset)
     setErrors({})
   }
 
@@ -67,13 +63,7 @@ const NewEventForm = (props) => {
     }
 
     addNewEvent(payload)
-    setNewEvent({
-      eventName: "",
-      eventDescription: "",
-      eventDate: eventDate,
-      rsvpDate: rsvpDate,
-      invitees: ""
-    })
+    setNewEvent(reset)
   }
 
   const addNewEvent = (payload) => {
@@ -137,6 +127,7 @@ const NewEventForm = (props) => {
             selected={eventDate}
             onChange={date => setEventDate(date)}
             placeholderText="mm-dd-yyyy"
+            minDate={new Date()}
           />
         </label>
 
@@ -146,6 +137,7 @@ const NewEventForm = (props) => {
             selected={rsvpDate}
             onChange={date => setRsvpDate(date)}
             placeholderText="mm-dd-yyyy"
+            minDate={eventDate}
           />
         </label>
 
