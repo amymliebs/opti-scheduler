@@ -41,7 +41,8 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         event_description: "It's time for the weekly check-in. Please RSVP with your availability by Friday and you will be scheduled a meeting time.",
         event_date: "2019-11-12",
         rsvp_date: "2019-11-08",
-        invitees: "hello@example.com" }
+        invitees: "hello@example.com",
+        location: 'room 221'}
       }
 
       post :create, :params => event3, format: :json
@@ -57,6 +58,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(returned_json["event_date"]).to eq event3[:event][:event_date]
       expect(returned_json["rsvp_date"]).to eq event3[:event][:rsvp_date]
       expect(returned_json["invitees"]).to eq event3[:event][:invitees]
+      expect(returned_json["location"]).to eq event3[:event][:location]
       expect(Event.count).to eq(prev_count + 1)
 
       expect(ActionMailer::Base.deliveries.size).to eq(1)
