@@ -8,13 +8,11 @@ import ErrorList from "./ErrorList"
 const NewEventForm = (props) => {
   const[errors, setErrors]= useState({})
   const[shouldRedirect, setShouldRedirect] = useState(false)
-  const[eventDate, setEventDate] = useState(new Date())
-  const[rsvpDate, setRsvpDate] = useState(new Date())
   const[newEvent, setNewEvent] = useState({
     eventName: "",
     eventDescription: "",
-    eventDate: eventDate,
-    rsvpDate: rsvpDate,
+    eventDate: "",
+    rsvpDate: "",
     invitees: ""
   })
 
@@ -25,13 +23,20 @@ const NewEventForm = (props) => {
     })
   }
 
+  const handleDateChange = (date) => {
+    setNewEvent({
+      ...newEvent,
+      ["rsvpDate"]: date
+    })
+  }
+
   const clearFields = (event) => {
     event.preventDefault()
     setNewEvent({
       eventName: "",
       eventDescription: "",
-      eventDate: eventDate,
-      rsvpDate: rsvpDate,
+      eventDate: "",
+      rsvpDate: "",
       invitees: ""
     })
     setErrors({})
@@ -61,8 +66,8 @@ const NewEventForm = (props) => {
     let payload = {
       eventName: newEvent.eventName,
       eventDescription: newEvent.eventDescription,
-      eventDate: eventDate,
-      rsvpDate: rsvpDate,
+      eventDate: newEvent.eventDate,
+      rsvpDate: newEvent.rsvpDate,
       invitees: newEvent.invitees
     }
 
@@ -70,8 +75,8 @@ const NewEventForm = (props) => {
     setNewEvent({
       eventName: "",
       eventDescription: "",
-      eventDate: eventDate,
-      rsvpDate: rsvpDate,
+      eventDate: "",
+      rsvpDate: "",
       invitees: ""
     })
   }
@@ -134,18 +139,20 @@ const NewEventForm = (props) => {
         <label> Event Window Date
           <DatePicker
             name="eventDate"
-            selected={eventDate}
-            onChange={date => setEventDate(date)}
+            selected={newEvent.eventDate}
+            onChange={handleFieldChange}
             placeholderText="mm-dd-yyyy"
+            minDate={new Date()}
           />
         </label>
 
         <label> RSVP by Date
-          <DatePicker
-            name="rsvpDate"
-            selected={rsvpDate}
-            onChange={date => setRsvpDate(date)}
-            placeholderText="mm-dd-yyyy"
+          <input
+            type="date"
+            min="2019-11-01"
+            selected={newEvent.rsvpDate}
+            onChange={handleDateChange}
+            todayButton="Go to Today"
           />
         </label>
 
