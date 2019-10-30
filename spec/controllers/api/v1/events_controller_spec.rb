@@ -66,7 +66,6 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(returned_json["rsvp_date"]).to eq event3[:event][:rsvp_date]
       expect(returned_json["invitees"]).to eq event3[:event][:invitees]
       expect(returned_json["location"]).to eq event3[:event][:location]
-      binding.pry
 
       expect(Event.count).to eq(prev_count + 1)
 
