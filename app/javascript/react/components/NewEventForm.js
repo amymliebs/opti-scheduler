@@ -40,7 +40,7 @@ const NewEventForm = (props) => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["eventName"]
+    const requiredFields = ["eventName", "invitees"]
     requiredFields.forEach(field => {
       if (newEvent[field].trim() === "") {
         submitErrors = {
@@ -59,15 +59,20 @@ const NewEventForm = (props) => {
       return
     }
 
-    let payload = { event: {
-      eventName: newEvent.eventName,
-      eventDescription: newEvent.eventDescription,
-      location: newEvent.location,
-      eventDate: eventDate,
-      rsvpDate: rsvpDate,
-      invitees: newEvent.invitees},
+    let payload = {
+      event: {
+        eventName: newEvent.eventName,
+        eventDescription: newEvent.eventDescription,
+        location: newEvent.location,
+        eventDate: eventDate,
+        rsvpDate: rsvpDate
+      },
       timeslot: {
-      slot: timeslots}
+        slot: timeslots
+      },
+      invitee: {
+        email: newEvent.invitees
+      }
     }
 
     addNewEvent(payload)

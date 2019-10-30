@@ -13,29 +13,36 @@ class Api::V1::EventsController < ApiController
   end
 
   def create
-    @timeslots = params[:timeslot][:slot]
+    invitees = params[:invitee][:email]
+    timeslots = params[:timeslot][:slot]
     @event = Event.new(event_params)
 
     @event.user = current_user
     @user = @event.user
 
+    new_people = []
     new_times = []
 
     if @event.save
-      @timeslots.each do |timeslot|
-        new_time = Timeslot.new
-        new_time.slot = timeslot
-        new_time.event = @event
-        new_times << new_time
+      invitees.split.each do |invitee|
+        new_person = Invitee.new
+        new_person.email = invitee
+        new_person.event = @event
+        new_people << new_person
+      end
+      if new_people.map(&:save)
+        timeslots.each do |timeslot|
+          new_time = Timeslot.new
+          new_time.slot = timeslot
+          new_time.event = @event
+          new_times << new_time
+        end
       end
       if new_times.map(&:save)
         CorrespondenceMailer.invitation_email(@event, @user).deliver_now
         render json: @event
       else
-        render json: {
-          errors: "Error: Your timeslots did not save.",
-          fields: @event
-        }
+        render json: { error: @event.errors.full_messages }, status: :unprocessable_entity
       end
     else
       render json: {
