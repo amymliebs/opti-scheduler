@@ -48,7 +48,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         invitees: "hello@example.com",
         location: 'room 221'},
         timeslot: {
-          slot: '9:00-10:00am'}
+          slot: ['3:00-4:00pm']}
         }
 
       post :create, :params => event3, format: :json
@@ -66,6 +66,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(returned_json["rsvp_date"]).to eq event3[:event][:rsvp_date]
       expect(returned_json["invitees"]).to eq event3[:event][:invitees]
       expect(returned_json["location"]).to eq event3[:event][:location]
+      binding.pry
 
       expect(Event.count).to eq(prev_count + 1)
 
@@ -87,7 +88,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
           location: 'room 221'
         },
         timeslot: {
-          slot: ['9:00-10:00am', '3:00-4:00pm']
+          slot: ['9:00-10:00am']
         }
       }
 
@@ -108,6 +109,30 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       FactoryBot.create(:event, user_id: user1.id)
 
       expect(ActionMailer::Base.deliveries.size).to eq(0)
+    end
+  end
+
+  describe "DELETE#destroy" do
+    it "should sucessfully delete an event" do
+      sign_in user1
+      prev_count = Event.count
+
+      delete :destroy, :params => {event: event1, id: event1.id}, format: :json
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+
+      expect(returned_json["event_name"]).to eq nil
+      expect(returned_json["event_description"]).to eq nil
+      expect(returned_json["event_date"]).to eq nil
+      expect(returned_json["rsvp_date"]).to eq nil
+      expect(returned_json["invitees"]).to eq nil
+      expect(returned_json["location"]).to eq nil
+
+      expect(Event.count).to eq(prev_count - 1)
     end
   end
 end
