@@ -19,4 +19,10 @@ FactoryBot.define do
     user
   end
 
+  factory :timeslot do
+    times { ['First time', 'Second time', 'Third and final time'] }
+
+    event
+  end
+
 end
