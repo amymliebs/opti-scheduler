@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_10_29_185511) do
   end
 
   create_table "timeslots", force: :cascade do |t|
-    t.string "times", null: false
+    t.string "slot", null: false
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
