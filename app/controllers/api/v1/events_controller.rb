@@ -3,6 +3,15 @@ class Api::V1::EventsController < ApiController
     render json: Event.all
   end
 
+  def show
+    event = Event.find(params[:id])
+
+    render json: {
+      event: event,
+      timeslots: event.timeslots
+    }
+  end
+
   def create
     @timeslots = params[:timeslot][:times]
     @event = Event.new(event_params)
@@ -34,6 +43,15 @@ class Api::V1::EventsController < ApiController
         fields: @event
       }
     end
+  end
+
+  def destroy
+    event_to_delete = Event.find(params[:id])
+    event_to_delete.destroy
+
+    render json: {
+      events: Event.all
+    }
   end
 
   private
