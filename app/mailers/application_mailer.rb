@@ -1,3 +1,3 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'optischeduler@gmail.com'
+  default from: 'no-reply@optischeduler.com'
 end
