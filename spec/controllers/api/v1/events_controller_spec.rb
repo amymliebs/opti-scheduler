@@ -40,16 +40,21 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       prev_count = Event.count
       ActionMailer::Base.deliveries = []
 
-      event3 = { event: {
-        event_name: "Tuesday, November 12 Check-Ins",
-        event_description: "It's time for the weekly check-in. Please RSVP with your availability by Friday and you will be scheduled a meeting time.",
-        event_date: "2019-11-12",
-        rsvp_date: "2019-11-08",
-        invitees: "hello@example.com",
-        location: 'room 221'},
+      event3 = {
+        event: {
+          event_name: "Tuesday, November 12 Check-Ins",
+          event_description: "It's time for the weekly check-in. Please RSVP with your availability by Friday and you will be scheduled a meeting time.",
+          event_date: "2019-11-12",
+          rsvp_date: "2019-11-08",
+          location: 'room 221'
+        },
         timeslot: {
-          slot: ['3:00-4:00pm']}
+          slot: ['3:00-4:00pm']
+        },
+        invitee: {
+          email: 'example@gmail.com, example@yahoo.com'
         }
+      }
 
       post :create, :params => event3, format: :json
       returned_json = JSON.parse(response.body)
@@ -64,7 +69,6 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(returned_json["event_description"]).to eq event3[:event][:event_description]
       expect(returned_json["event_date"]).to eq event3[:event][:event_date]
       expect(returned_json["rsvp_date"]).to eq event3[:event][:rsvp_date]
-      expect(returned_json["invitees"]).to eq event3[:event][:invitees]
       expect(returned_json["location"]).to eq event3[:event][:location]
 
       expect(Event.count).to eq(prev_count + 1)
@@ -83,11 +87,13 @@ RSpec.describe Api::V1::EventsController, type: :controller do
           event_description: "It's time for the weekly check-in. Please RSVP with your availability by Friday and you will be scheduled a meeting time.",
           event_date: "11-12-2019",
           rsvp_date: "11-08-2019",
-          invitees: "hello@example.com",
           location: 'room 221'
         },
         timeslot: {
           slot: ['9:00-10:00am']
+        },
+        invitee: {
+          email: 'example@gmail.com, example@yahoo.com'
         }
       }
 
