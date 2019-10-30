@@ -159,7 +159,8 @@ const NewEventForm = (props) => {
             selected={rsvpDate}
             onChange={date => setRsvpDate(date)}
             placeholderText="mm-dd-yyyy"
-            minDate={eventDate}
+            maxDate={eventDate}
+            minDate={new Date()}
           />
         </label>
 

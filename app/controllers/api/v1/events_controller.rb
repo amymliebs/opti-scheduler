@@ -22,7 +22,6 @@ class Api::V1::EventsController < ApiController
 
     new_people = []
     new_times = []
-
     if @event.save
       invitees.split.each do |invitee|
         new_person = Invitee.new

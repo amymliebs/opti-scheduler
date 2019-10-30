@@ -8,6 +8,5 @@ class CreateInvitees < ActiveRecord::Migration[5.2]
       t.belongs_to :event, index: true
       t.timestamps
     end
-    add_index :invitees, :email, unique: true
   end
 end
