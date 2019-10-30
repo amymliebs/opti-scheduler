@@ -1,5 +1,5 @@
 class Timeslot < ApplicationRecord
-  validates :times, presence: true
+  validates :slot, presence: true
 
   belongs_to :event
 end
