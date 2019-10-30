@@ -5,7 +5,6 @@ import _ from 'lodash'
 import DatePicker from "react-datepicker"
 import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
-// import Beluga from "../data/Beluga.js"
 import CheckboxGroup from 'react-checkbox-group'
 
 
@@ -68,7 +67,7 @@ const NewEventForm = (props) => {
       rsvpDate: rsvpDate,
       invitees: newEvent.invitees},
       timeslot: {
-      times: timeslots}
+      slot: timeslots}
     }
 
     addNewEvent(payload)

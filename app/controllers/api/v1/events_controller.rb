@@ -13,7 +13,7 @@ class Api::V1::EventsController < ApiController
   end
 
   def create
-    @timeslots = params[:timeslot][:times]
+    @timeslots = params[:timeslot][:slot]
     @event = Event.new(event_params)
 
     @event.user = current_user
@@ -24,7 +24,7 @@ class Api::V1::EventsController < ApiController
     if @event.save
       @timeslots.each do |timeslot|
         new_time = Timeslot.new
-        new_time.times = timeslot
+        new_time.slot = timeslot
         new_time.event = @event
         new_times << new_time
       end

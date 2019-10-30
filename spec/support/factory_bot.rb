@@ -20,7 +20,7 @@ FactoryBot.define do
   end
 
   factory :timeslot do
-    times { ['First time', 'Second time', 'Third and final time'] }
+    slot { '0:00-0:00' }
 
     event
   end

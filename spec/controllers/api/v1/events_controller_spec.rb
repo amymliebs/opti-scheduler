@@ -48,7 +48,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         invitees: "hello@example.com",
         location: 'room 221'},
         timeslot: {
-          times: ['9:00-10:00am', '3:00-4:00pm']}
+          slot: '9:00-10:00am'}
         }
 
       post :create, :params => event3, format: :json
@@ -87,7 +87,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
           location: 'room 221'
         },
         timeslot: {
-          times: ['9:00-10:00am', '3:00-4:00pm']
+          slot: ['9:00-10:00am', '3:00-4:00pm']
         }
       }
 
