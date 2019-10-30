@@ -1,5 +1,5 @@
 <div class="body-text">
-    <h2 class="secondary-header">OptiScheduler</h2>
+    <h1 class="secondary-header">OptiScheduler</h1>
     <br />
     <div>
       <%= @user["first_name"] %> <%= @user["last_name"] %> has invited you to reply to an event on OptiScheduler.
@@ -12,14 +12,18 @@
       <br />
       <span>Event date:  <%= @event.event_date %></span>
       <br />
-      <span>Description:  <%= @event.event_description %></span>
+      <% if @event.event_description %>
+        <span>Description:  <%= @event.event_description %></span>
+      <%- end -%>
     </div>
     <br />
     <br />
     <div>
-      <span>Please RSVP with all times you are available by <%= @event.rsvp_date %>. You will be notified via email of a time that works well for both you and your event host.</span>
+      <span><b>Please RSVP with all times you are available by <%= @event.rsvp_date %></b>. You will be notified via email of a time that works well for both you and <%= @user["first_name"] %>.</span>
       <br/>
       <span> The sooner you RSVP, the more likely we are to find a time that work well for both of you!</span>
     </div>
-    <h4 className="centered">Click here to RSVP here.</h4>
+    <h4 className="centered">Click here to RSVP.</h4>
+
+    <%= link_to 'Click here', @url, :class => 'primary-text' %> to RSVP with your availability!
 </div>
