@@ -31,7 +31,6 @@ const InviteShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
-
   return(
     <div>
       <EventDetailsTile
@@ -43,6 +42,10 @@ const InviteShowContainer = (props) => {
         rsvpStatus={event.rsvpStatus}
       />
       <RSVPForm
+        email={invitee.email}
+        inviteeId={inviteeId}
+        eventId={eventId}
+        timeslots={timeslots}
       />
     </div>
   )

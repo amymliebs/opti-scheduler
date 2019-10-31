@@ -4,6 +4,7 @@ import humps from 'humps'
 import _ from 'lodash'
 import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
+// import EventWindow from "./EventWindow"
 import CheckboxGroup from 'react-checkbox-group'
 
 const RSVPForm = (props) => {
@@ -77,7 +78,7 @@ const RSVPForm = (props) => {
   }
 
   const addNewRSVP = (payload) => {
-    fetch(`/api/v1/events/${props.eventId}/invitees/${props.inviteeId}`, {
+    fetch("/api/v1/events", {
       method: "PATCH",
       body: JSON.stringify(humps.decamelizeKeys(payload)),
       headers: {
@@ -96,13 +97,14 @@ const RSVPForm = (props) => {
     })
     .then(response => response.json())
     .then(persistedData => {
+      debugger
       setShouldRedirect(true)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   if (shouldRedirect) {
-    return <Redirect to="/thankyou" />
+    return <Redirect to="/events" />
   }
 
   return(
@@ -138,6 +140,12 @@ const RSVPForm = (props) => {
             value={newRSVP.email}
           />
         </label>
+
+        <EventWindow
+          selectedTimeslots={props.selectedTimeslots}
+          setSelectedTimeslots={props.setSelectedTimeslots}
+          timeslots={props.timeslots}
+        />
 
         <label> Note for host: (optional)
           <textarea
