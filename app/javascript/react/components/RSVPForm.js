@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
 import humps from 'humps'
 import _ from 'lodash'
-import DatePicker from "react-datepicker"
 import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
 import CheckboxGroup from 'react-checkbox-group'
@@ -93,3 +92,5 @@ const RSVPForm = (props) => {
     </div>
   )
 }
+
+export default RSVPForm
