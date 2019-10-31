@@ -4,7 +4,7 @@ class CorrespondenceMailer < ApplicationMailer
     @event = event
     @user = event.user
     @invitee = invitee
-    @url = "www.optischeduler.herokuapp.com/events/#{event.id}/invitees/#{invitee.id}"
+    @url = "http://optischeduler.herokuapp.com/#{event.id}/invitees/#{invitee.id}"
 
     mail(
       bcc: @invitee.email,
