@@ -23,7 +23,7 @@ class Api::V1::EventsController < ApiController
     new_people = []
     new_times = []
     if @event.save
-      invitees.split(',').each do |invitee|
+      invitees.split(', ').each do |invitee|
         new_person = Invitee.new
         new_person.email = invitee
         new_person.event = @event
