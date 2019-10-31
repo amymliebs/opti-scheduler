@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2019_10_30_164959) do
   create_table "events", force: :cascade do |t|
     t.string "event_name", null: false
     t.text "event_description"
-    t.date "event_date"
-    t.date "rsvp_date"
+    t.date "event_date", null: false
+    t.date "rsvp_date", null: false
     t.string "access_code"
     t.bigint "user_id"
     t.datetime "created_at", null: false

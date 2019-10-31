@@ -28,6 +28,7 @@ class Api::V1::EventsController < ApiController
         new_person.email = invitee
         new_person.event = @event
         new_people << new_person
+        @invitee = new_person
       end
       if new_people.map(&:save)
         timeslots.each do |timeslot|
@@ -38,7 +39,7 @@ class Api::V1::EventsController < ApiController
         end
       end
       if new_times.map(&:save)
-        CorrespondenceMailer.invitation_email(@event, @user).deliver_now
+        CorrespondenceMailer.invitation_email(@event, @user, @invitee).deliver_now
         render json: @event
       else
         render json: { error: @event.errors.full_messages }, status: :unprocessable_entity

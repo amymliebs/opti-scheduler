@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from "react-router-dom"
 import humps from 'humps'
 import EventNameTile from './EventNameTile'
-import EventDetails from './EventDetails'
+import EventDetailsTile from './EventDetailsTile'
 
 const EventShowContainer = (props) => {
   const[event, setEvent] = useState({})
@@ -52,16 +52,24 @@ const EventShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+  const handleDeleteClick = () => {
+    deleteEvent(eventId)
+  }
+
   if (shouldRedirect){
     return <Redirect to="/events" />
   }
 
   return(
     <div>
-      <EventDetails
+      <button onClick={handleDeleteClick}>DELETE MY EVENT</button>
+      <EventDetailsTile
         eventName={event.eventName}
-        deleteEvent={deleteEvent}
-        eventId={eventId}
+        eventDescription={event.eventDescription}
+        location={event.location}
+        eventDate={event.eventDate}
+        rsvpDate={event.rsvpDate}
+        rsvpStatus={event.rsvpStatus}
       />
     </div>
   )
