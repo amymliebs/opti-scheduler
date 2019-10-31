@@ -1,5 +1,6 @@
 class CorrespondenceMailer < ApplicationMailer
   def invitation_email(event, user, invitee)
+
     @event = event
     @user = event.user
     @invitee = invitee
