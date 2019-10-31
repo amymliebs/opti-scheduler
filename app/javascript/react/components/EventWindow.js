@@ -1,28 +1,28 @@
 import React from 'react'
-import CheckboxGroup from 'react-checkbox-group'
 
 const EventWindow = (props) => {
+  return(
 
-  const availableTimes = {
-    <CheckboxGroup name="timeslots" value={props.selectedTimeslots} onChange={props.setSelectedTimeslots}>
-      {(Checkbox) => (
-        <>
-          <div>
-            props.timeslots.forEach ((timeslot) => {
-              <label>
-                <Checkbox value={timeslot} /> {timeslot}
-              </label>
-            })
-          </div>
-        </>
-      )}
-    </CheckboxGroup>
-  }
+  )
+
+
+
+
+
+  const availableTimes = props.timeslots.map ((timeslot) => {
+    return(
+      <label>
+        <Checkbox value={timeslot} /> {timeslot}
+      </label>
+    )}
+  )
 
   return(
     <div>
       <div> Event window times go here </div>
-      {availableTimes}
+        <CheckboxGroup name="timeslots" value={props.selectedTimeslots} onChange={props.setSelectedTimeslots}>
+          {(Checkbox) => ({availableTimes} )}
+      </CheckboxGroup>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import _ from 'lodash'
 import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
 import CheckboxGroup from 'react-checkbox-group'
+import EventWindow from "./EventWindow"
 
 const RSVPForm = (props) => {
   const reset = {
@@ -25,6 +26,10 @@ const RSVPForm = (props) => {
     timeslots: selectedTimeslots
   })
   const[selectedTimeslots, setSelectedTimeslots] = useState([])
+
+  useEffect(() => {
+    setNewRSVP({email: props.email})
+  },[props])
 
   const handleFieldChange = (event) => {
     setNewRSVP({
@@ -138,6 +143,12 @@ const RSVPForm = (props) => {
             value={newRSVP.email}
           />
         </label>
+
+        <EventWindow
+          selectedTimeslots={props.selectedTimeslots}
+          setSelectedTimeslots={props.setSelectedTimeslots}
+          timeslots={props.timeslots}
+        />
 
         <label> Note for host: (optional)
           <textarea

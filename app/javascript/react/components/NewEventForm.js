@@ -7,7 +7,6 @@ import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
 import CheckboxGroup from 'react-checkbox-group'
 
-
 const NewEventForm = (props) => {
   const reset = {
     eventName: "",

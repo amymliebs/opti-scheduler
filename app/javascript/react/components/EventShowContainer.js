@@ -63,6 +63,7 @@ const EventShowContainer = (props) => {
   return(
     <div>
       <button onClick={handleDeleteClick}>DELETE MY EVENT</button>
+      <button onClick={handleScheduleCreate}>CREATE MY SCHEDULE!</button>
       <EventDetailsTile
         eventName={event.eventName}
         eventDescription={event.eventDescription}
