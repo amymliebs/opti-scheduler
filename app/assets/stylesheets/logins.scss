@@ -10,12 +10,17 @@
   background-position: top;
 }
 
+.spacer {
+  height: 8em;
+  width: 100%
+}
+
 .logins {
   background-color: $dark-gray;
   color: white;
-  margin: 8em auto;
   width: 800px;
   border-radius: 10px;
   text-align: justify;
   padding: 2em;
+  margin: auto
 }

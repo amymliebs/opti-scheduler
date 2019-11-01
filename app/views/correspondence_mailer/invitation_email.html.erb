@@ -1,30 +1,31 @@
 <div class="body-text">
-    <h1 class="secondary-header">OptiScheduler</h1>
+    <h1 class="secondary-header"><i class="far fa-clock"></i>ptiScheduler</h1>
     <br />
     <div>
       <%= @user["first_name"] %> <%= @user["last_name"] %> has invited you to reply to an event on OptiScheduler.
     </div>
     <br />
     <div>
-      <span>Event name:  <%= @event.event_name %></span>
+      <span>Event window name:  <%= @event.event_name %></span>
       <br />
-      <span>Event host:  <%= @user["first_name"] %> <%= @user["last_name"] %></span>
-      <br />
-      <span>Event date:  <%= @event.event_date %></span>
+      <span>Event date:  <%= @event.event_date.strftime("%b. %d, %Y") %></span>
       <br />
       <% if @event.event_description != "" %>
         <span>Description:  <%= @event.event_description %></span>
       <%- end -%>
-      <br />
-      <span>Possible meeting times:  <%= @timeslots %></span>
     </div>
     <br />
     <br />
     <div>
-      <span><b>Please RSVP with all times you are available by <%= @event.rsvp_date %></b>. You will be notified via email of a time that works well for both you and <%= @user["first_name"] %>.</span>
+      <span><b>Please RSVP by <%= @event.rsvp_date.strftime("%b. %d, %Y") %> with all times you are available to meet</b>. You will be notified via email of a time that works well for both you and <%= @user["first_name"] %>.</span>
       <br/>
       <span> The sooner you RSVP, the more likely we are to find a time that work well for both of you!</span>
     </div>
   <br/>
   <%= link_to 'Click here', @url, :class => 'centered' %> to RSVP with your availability!
+  <br />
+  <br />
+  <span>
+    About OptiScheduler: OptiScheduler is a an optimization tool designed to make scheduling a one-on-one meeting easy. The host creates an event window, invitees reply with their availability within that window, and OptiScheduler creates a shcedule to meet everyone's needs. <%= link_to 'Get started hosting your own event!', "https://optischeduler.herokuapp.com" %>
+  </span>
 </div>

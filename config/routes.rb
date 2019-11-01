@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'static_pages#index'
 
-  get '/events', to: 'static_pages#index'
+  get '/welcome', to: 'static_pages#index'
+  get '/', to: 'static_pages#index'
   get '/events/new', to: 'static_pages#index'
   get '/events/:event_code/invitees/:invitee_code', to: 'static_pages#index'
   get '/events/:event_code', to: 'static_pages#index'
