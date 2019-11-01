@@ -1,10 +1,12 @@
 class CorrespondenceMailer < ApplicationMailer
-  def invitation_email(event, user, invitee)
+  def invitation_email(event, user, invitee, timeslots)
 
     @event = event
     @user = event.user
     @invitee = invitee
-    @url = "http://optischeduler.herokuapp.com/#{event.id}/invitees/#{invitee.id}"
+    @timeslots = timeslots
+
+    @url = "https://optischeduler.herokuapp.com/events/#{event.id}/invitees/#{invitee.id}"
 
     mail(
       bcc: @invitee.email,

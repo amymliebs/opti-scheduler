@@ -4,8 +4,8 @@ import humps from 'humps'
 import _ from 'lodash'
 import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
+// import EventWindow from "./EventWindow"
 import CheckboxGroup from 'react-checkbox-group'
-import EventWindow from "./EventWindow"
 
 const RSVPForm = (props) => {
   const reset = {
@@ -26,10 +26,6 @@ const RSVPForm = (props) => {
     timeslots: selectedTimeslots
   })
   const[selectedTimeslots, setSelectedTimeslots] = useState([])
-
-  useEffect(() => {
-    setNewRSVP({email: props.email})
-  },[props])
 
   const handleFieldChange = (event) => {
     setNewRSVP({
@@ -82,7 +78,7 @@ const RSVPForm = (props) => {
   }
 
   const addNewRSVP = (payload) => {
-    fetch(`/api/v1/events/${props.eventCode}/invitees/${props.inviteeCode}`, {
+    fetch("/api/v1/events", {
       method: "PATCH",
       body: JSON.stringify(humps.decamelizeKeys(payload)),
       headers: {
@@ -101,13 +97,14 @@ const RSVPForm = (props) => {
     })
     .then(response => response.json())
     .then(persistedData => {
+      debugger
       setShouldRedirect(true)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   if (shouldRedirect) {
-    return <Redirect to="/thankyou" />
+    return <Redirect to="/events" />
   }
 
   return(

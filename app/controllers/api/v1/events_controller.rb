@@ -4,7 +4,7 @@ class Api::V1::EventsController < ApiController
   end
 
   def show
-    event = Event.find(params[:id])
+    event = Event.find_by(access_code: params[:id])
 
     render json: {
       event: event,
@@ -22,6 +22,7 @@ class Api::V1::EventsController < ApiController
 
     new_people = []
     new_times = []
+
     if @event.save
       invitees.split(', ').each do |invitee|
         new_person = Invitee.new
@@ -37,9 +38,10 @@ class Api::V1::EventsController < ApiController
           new_times << new_time
         end
       end
+      times_string = timeslots.join(", ")
       if new_times.map(&:save)
         @event.invitees.each do |invitee|
-          CorrespondenceMailer.invitation_email(@event, @user, invitee).deliver_now
+          CorrespondenceMailer.invitation_email(@event, @user, invitee, times_string).deliver_now
         end
 
         render json: @event
