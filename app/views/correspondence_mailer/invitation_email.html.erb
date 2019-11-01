@@ -12,9 +12,11 @@
       <br />
       <span>Event date:  <%= @event.event_date %></span>
       <br />
-      <% if @event.event_description %>
+      <% if @event.event_description != "" %>
         <span>Description:  <%= @event.event_description %></span>
       <%- end -%>
+      <br />
+      <span>Possible meeting times:  <%= @timeslots %></span>
     </div>
     <br />
     <br />
@@ -24,5 +26,5 @@
       <span> The sooner you RSVP, the more likely we are to find a time that work well for both of you!</span>
     </div>
   </ br>
-  <%= link_to 'Click here', @url, :class => 'centered' %> to RSVP with your availability! %>
+  <%= link_to 'Click here', @url, :class => 'centered' %> to RSVP with your availability!
 </div>

@@ -7,11 +7,11 @@ const InviteShowContainer = (props) => {
   const[invitee, setInvitee] = useState({})
   const[event, setEvent] = useState({})
   const[timeslots, setTimeslots] = useState([])
-  let eventId = props.match.params.event_id
-  let inviteeId = props.match.params.id
+  let eventCode = props.match.params.eventCode
+  let inviteeCode = props.match.params.inviteeCode
 
   useEffect(() => {
-    fetch(`/api/v1/events/${eventId}/invitees/${inviteeId}`)
+    fetch(`/api/v1/events/${eventCode}/invitees/${inviteeCode}`)
     .then((response) => {
       if (response.ok) {
         return response
@@ -24,9 +24,9 @@ const InviteShowContainer = (props) => {
     .then(response => response.json())
     .then(body => {
       let camelizedBody = humps.camelizeKeys(body)
+      setInvitee(camelizedBody.invitee)
       setEvent(camelizedBody.event)
       setTimeslots(camelizedBody.timeslots)
-      setInvitee(camelizedBody.invitee)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
@@ -43,8 +43,8 @@ const InviteShowContainer = (props) => {
       />
       <RSVPForm
         email={invitee.email}
-        inviteeId={inviteeId}
-        eventId={eventId}
+        inviteeCode={inviteeCode}
+        eventCode={eventCode}
         timeslots={timeslots}
       />
     </div>

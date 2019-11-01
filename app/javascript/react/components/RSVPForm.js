@@ -82,7 +82,7 @@ const RSVPForm = (props) => {
   }
 
   const addNewRSVP = (payload) => {
-    fetch(`/api/v1/events/${props.eventId}/invitees/${props.inviteeId}`, {
+    fetch(`/api/v1/events/${props.eventCode}/invitees/${props.inviteeCode}`, {
       method: "PATCH",
       body: JSON.stringify(humps.decamelizeKeys(payload)),
       headers: {

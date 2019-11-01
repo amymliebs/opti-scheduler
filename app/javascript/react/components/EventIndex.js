@@ -30,6 +30,7 @@ const EventIndex = (props) => {
       <EventNameTile
         key={event.id}
         id={event.id}
+        accessCode={event.accessCode}
         eventName={event.eventName}
         rsvpStatus={event.rsvpStatus}
       />

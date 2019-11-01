@@ -1,7 +1,7 @@
 users = User.create!([
   { first_name: 'Jane', last_name: 'Doe', email: 'janedoe123@gmail.com', password: 'janedoepassword'},
   { first_name: 'John', last_name: 'Doe', email: 'johndoe123@gmail.com', password: 'jondoepassword'},
-  { first_name: 'Julio', last_name: 'Martinez', email: 'juliomartinez123@gmail.com', password: 'juliomartinezpassword' }
+  { first_name: 'Julio', last_name: 'Martinez', email: 'juliomartinez123@gmail.com', password: 'juliomartinezpassword'}
   ])
 
 events = Event.create!([

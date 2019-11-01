@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   get '/events', to: 'static_pages#index'
   get '/events/new', to: 'static_pages#index'
-  get '/events/:id/invitees/:id', to: 'static_pages#index'
-  get '/events/:id', to: 'static_pages#index'
+  get '/events/:event_code/invitees/:invitee_code', to: 'static_pages#index'
+  get '/events/:event_code', to: 'static_pages#index'
   get '/thankyou', to: 'static_pages#index'
 
   devise_for :users

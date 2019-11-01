@@ -8,10 +8,10 @@ const EventShowContainer = (props) => {
   const[event, setEvent] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [timeslots, setTimeslots] = useState([])
-  let eventId = props.match.params.id
+  let eventCode = props.match.params.eventCode
 
   useEffect(() => {
-    fetch(`/api/v1/events/${eventId}`)
+    fetch(`/api/v1/events/${eventCode}`)
     .then((response) => {
       if (response.ok) {
         return response
@@ -30,8 +30,8 @@ const EventShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
-  const deleteEvent = (eventId) => {
-    fetch(`/api/v1/events/${eventId}.json`, {
+  const deleteEvent = (eventCode) => {
+    fetch(`/api/v1/events/${eventCode}.json`, {
       credentials: 'same-origin',
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'}
@@ -53,7 +53,7 @@ const EventShowContainer = (props) => {
   }
 
   const handleDeleteClick = () => {
-    deleteEvent(eventId)
+    deleteEvent(eventCode)
   }
 
   if (shouldRedirect){
@@ -63,7 +63,6 @@ const EventShowContainer = (props) => {
   return(
     <div>
       <button onClick={handleDeleteClick}>DELETE MY EVENT</button>
-      <button onClick={handleScheduleCreate}>CREATE MY SCHEDULE!</button>
       <EventDetailsTile
         eventName={event.eventName}
         eventDescription={event.eventDescription}

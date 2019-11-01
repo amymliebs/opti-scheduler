@@ -14,8 +14,8 @@ const App = (props) => {
         <Route exact path="/" component={WelcomeContainer}/>
         <Route exact path="/events" component={EventIndex}/>
         <Route exact path="/events/new" component={NewEventForm}/>
-        <Route exact path="/events/:event_id/invitees/:id" component={InviteShowContainer}/>
-        <Route exact path="/events/:id" component={EventShowContainer}/>
+        <Route exact path="/events/:eventCode/invitees/:inviteeCode" component={InviteShowContainer}/>
+        <Route exact path="/events/:eventCode" component={EventShowContainer}/>
         <Route exact path="/thankyou" component={RSVPThankYou}/>
       </Switch>
     </BrowserRouter>
