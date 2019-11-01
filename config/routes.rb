@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/events/:event_code/invitees/:invitee_code', to: 'static_pages#index'
   get '/events/:event_code', to: 'static_pages#index'
   get '/thankyou', to: 'static_pages#index'
+  get '*', to: 'static_pages#index'
 
   devise_for :users
 

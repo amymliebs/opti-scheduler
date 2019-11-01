@@ -5,14 +5,13 @@ import _ from 'lodash'
 import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
 import CheckboxGroup from 'react-checkbox-group'
-import TimeslotTile from './TimeslotTile'
-// import EventWindow from "./EventWindow"
+import EventWindow from "./EventWindow"
 
 const RSVPForm = (props) => {
   const reset = {
     firstName: "",
     lastName: "",
-    email: "",
+    email: props.email,
     note: "",
     timeslots: selectedTimeslots
   }
@@ -28,21 +27,9 @@ const RSVPForm = (props) => {
   })
   const[selectedTimeslots, setSelectedTimeslots] = useState([])
 
-  let rsvpTimes = [
-    { slot: '9:00-10:00am'},
-    { slot: '11:00am-12:00pm'},
-    { slot: '3:00-4:00pm'}
-  ]
-  //
-  // let rsvpTimes=["yes", "hi", "hello"]
-  //
-
-  //
-  // })
-
-  // useEffect(() => {
-  //   setNewRSVP({email: props.email})
-  // },[props])
+  useEffect(() => {
+    setNewRSVP({email: props.email})
+  },[props])
 
   const handleFieldChange = (event) => {
     setNewRSVP({
@@ -123,15 +110,6 @@ const RSVPForm = (props) => {
     return <Redirect to="/thankyou" />
   }
 
-  let options = props.timeslots.map((time) => {
-    return(
-      <TimeslotTile
-        key={time.slot}
-        timeslot={time.slot}
-      />
-    )
-  })
-
   return(
     <div>
       <h2>RSVP with Your Availability </h2>
@@ -166,7 +144,11 @@ const RSVPForm = (props) => {
           />
         </label>
 
-          {options}
+        <EventWindow
+          selectedTimeslots={props.selectedTimeslots}
+          setSelectedTimeslots={props.setSelectedTimeslots}
+          timeslots={props.timeslots}
+        />
 
         <label> Note for host: (optional)
           <textarea
