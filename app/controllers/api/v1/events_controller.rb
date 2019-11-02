@@ -46,6 +46,7 @@ class Api::V1::EventsController < ApiController
           CorrespondenceMailer.invitation_email(@event, @user, invitee, times_string).deliver_now
         end
 
+        flash[:message] = "#{@event.event_name} successfully created! Invitations have been sent via email."
         render json: @event
       else
         render json: { error: @event.errors.full_messages }, status: :unprocessable_entity

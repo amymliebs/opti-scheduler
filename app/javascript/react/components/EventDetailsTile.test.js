@@ -18,7 +18,7 @@ describe ("EventDetailsTile", () => {
           location="Room 213"
           eventDate="2019-02-14"
           rsvpDate="2019-02-08"
-          rsvpStatus="schedule pending"
+          rsvpStatus="Schedule pending"
         />
       </BrowserRouter>
     )
@@ -29,22 +29,22 @@ describe ("EventDetailsTile", () => {
   })
 
   it("should say the description of the event", () => {
-    expect(wrapper.find('.secondary-header').text()).toBe("Please sign up for a time to check in.")
+    expect(wrapper.find('.secondary-header').text()).toBe("Description: Please sign up for a time to check in.")
   })
 
   it("should say the location of the event", () => {
-    expect(wrapper.find('.sub-text').text()).toBe("Room 213")
+    expect(wrapper.find('.sub-text').text()).toBe("Location: Room 213")
   })
 
   it("should say the date of the event", () => {
-    expect(wrapper.find('#event-date').text()).toBe("2019-02-14")
+    expect(wrapper.find('.date').at(0).text()).toBe("Event Date: 02-14-2019")
   })
 
-  it("should say the description of the event", () => {
-    expect(wrapper.find('#rsvp-date').text()).toBe("2019-02-08")
+  it("should say the RSVP date of the event", () => {
+    expect(wrapper.find('.date').at(1).text()).toBe("Please RSVP by 02-08-2019")
   })
 
   it("should display the rsvp status of the event", () => {
-    expect(wrapper.find('#rsvp-status').text()).toBe("schedule pending")
+    expect(wrapper.find('#rsvp-status').text()).toBe("Schedule status: Schedule pending")
   })
 })
