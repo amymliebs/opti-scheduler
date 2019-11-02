@@ -59,7 +59,7 @@ class Api::V1::EventsController < ApiController
   end
 
   def destroy
-    event_to_delete = Event.find(params[:id])
+    event_to_delete = Event.find_by(access_code: params[:id])
     event_to_delete.destroy
 
     render json: {

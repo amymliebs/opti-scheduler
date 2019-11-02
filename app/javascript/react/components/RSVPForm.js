@@ -6,13 +6,12 @@ import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
 import CheckboxGroup from 'react-checkbox-group'
 import TimeslotTile from './TimeslotTile'
-// import EventWindow from "./EventWindow"
 
 const RSVPForm = (props) => {
   const reset = {
     firstName: "",
     lastName: "",
-    email: "",
+    email: props.email,
     note: "",
     timeslots: selectedTimeslots
   }
@@ -28,21 +27,9 @@ const RSVPForm = (props) => {
   })
   const[selectedTimeslots, setSelectedTimeslots] = useState([])
 
-  let rsvpTimes = [
-    { slot: '9:00-10:00am'},
-    { slot: '11:00am-12:00pm'},
-    { slot: '3:00-4:00pm'}
-  ]
-  //
-  // let rsvpTimes=["yes", "hi", "hello"]
-  //
-
-  //
-  // })
-
-  // useEffect(() => {
-  //   setNewRSVP({email: props.email})
-  // },[props])
+  useEffect(() => {
+    setNewRSVP({email: props.email})
+  },[props])
 
   const handleFieldChange = (event) => {
     setNewRSVP({
@@ -128,6 +115,8 @@ const RSVPForm = (props) => {
       <TimeslotTile
         key={time.slot}
         timeslot={time.slot}
+        selectedTimeslots={selectedTimeslots}
+        setSelectedTimeslots={setSelectedTimeslots}
       />
     )
   })
@@ -166,7 +155,7 @@ const RSVPForm = (props) => {
           />
         </label>
 
-          {options}
+        {options}
 
         <label> Note for host: (optional)
           <textarea

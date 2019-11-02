@@ -3,5 +3,4 @@ class Availability < ApplicationRecord
   belongs_to :timeslot
   belongs_to :invitee
 
-  enum status: [:available, :scheduled]
 end

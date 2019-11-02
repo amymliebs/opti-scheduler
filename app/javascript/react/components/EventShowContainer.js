@@ -57,7 +57,7 @@ const EventShowContainer = (props) => {
   }
 
   if (shouldRedirect){
-    return <Redirect to="/events" />
+    return <Redirect to="/" />
   }
 
   return(
