@@ -73,7 +73,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
       expect(Event.count).to eq(prev_count + 1)
 
-      expect(ActionMailer::Base.deliveries.size).to eq(2)
+      expect(ActionMailer::Base.deliveries.size).to eq(3)
       last_email = ActionMailer::Base.deliveries.last
     end
 
@@ -118,11 +118,11 @@ RSpec.describe Api::V1::EventsController, type: :controller do
   end
 
   describe "DELETE#destroy" do
-    it "should sucessfully delete an event" do
+    it "should successfully delete an event" do
       sign_in user1
       prev_count = Event.count
 
-      delete :destroy, :params => {event: event1, id: event1.id}, format: :json
+      delete :destroy, :params => {event: event1, id: event1.access_code}, format: :json
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
@@ -134,7 +134,6 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(returned_json["event_description"]).to eq nil
       expect(returned_json["event_date"]).to eq nil
       expect(returned_json["rsvp_date"]).to eq nil
-      expect(returned_json["invitees"]).to eq nil
       expect(returned_json["location"]).to eq nil
 
       expect(Event.count).to eq(prev_count - 1)

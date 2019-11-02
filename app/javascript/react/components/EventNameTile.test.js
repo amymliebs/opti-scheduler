@@ -15,21 +15,21 @@ describe ("EventNameTile", () => {
         <EventNameTile
           eventName="July 26th Check-In"
           rsvpStatus="schedule pending"
-          id="32"
+          accessCode="32"
         />
       </BrowserRouter>
     )
   })
 
-  it("visitor goes to index page sees a list of parks", () => {
+  it("should say the name of each event", () => {
     expect(wrapper.find('.event-name').text()).toBe("July 26th Check-In")
   })
 
-  it("visitor goes to index page sees a list of parks", () => {
+  it("should display the rsvp status of each event", () => {
     expect(wrapper.find('.rsvp-status').text()).toBe("schedule pending")
   })
 
-  it("should render a link to /parks", () => {
+  it("should render a link to the event show page", () => {
     const link = wrapper.find('Link').first()
 
     expect(link).toBeDefined()
