@@ -5,7 +5,7 @@ import _ from 'lodash'
 import ErrorList from "./ErrorList"
 import Timeslots from "../data/Timeslots.js"
 import CheckboxGroup from 'react-checkbox-group'
-import EventWindow from "./EventWindow"
+import TimeslotTile from './TimeslotTile'
 
 const RSVPForm = (props) => {
   const reset = {
@@ -110,6 +110,17 @@ const RSVPForm = (props) => {
     return <Redirect to="/thankyou" />
   }
 
+  let options = props.timeslots.map((time) => {
+    return(
+      <TimeslotTile
+        key={time.slot}
+        timeslot={time.slot}
+        selectedTimeslots={selectedTimeslots}
+        setSelectedTimeslots={setSelectedTimeslots}
+      />
+    )
+  })
+
   return(
     <div>
       <h2>RSVP with Your Availability </h2>
@@ -144,11 +155,7 @@ const RSVPForm = (props) => {
           />
         </label>
 
-        <EventWindow
-          selectedTimeslots={props.selectedTimeslots}
-          setSelectedTimeslots={props.setSelectedTimeslots}
-          timeslots={props.timeslots}
-        />
+        {options}
 
         <label> Note for host: (optional)
           <textarea

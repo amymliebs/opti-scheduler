@@ -40,6 +40,8 @@ class Api::V1::EventsController < ApiController
       end
       times_string = timeslots.join(", ")
       if new_times.map(&:save)
+        CorrespondenceMailer.event_creation_email(@event, @user, invitees, times_string).deliver_now
+
         @event.invitees.each do |invitee|
           CorrespondenceMailer.invitation_email(@event, @user, invitee, times_string).deliver_now
         end
@@ -57,7 +59,7 @@ class Api::V1::EventsController < ApiController
   end
 
   def destroy
-    event_to_delete = Event.find(params[:id])
+    event_to_delete = Event.find_by(access_code: params[:id])
     event_to_delete.destroy
 
     render json: {
