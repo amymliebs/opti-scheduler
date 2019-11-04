@@ -4,20 +4,22 @@
   font-size: 20px
 }
 
+hr {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, .1), rgba(255, 255, 255, 1), rgba(0, 0, 0, .1));
+}
+
 .primary-header {
   text-align: center;
   font-size: 40px;
   color: $dark-gray;
-  padding: 50px 0px;
-}
-
-.primary-subheader {
-
+  padding-top: 40px;
 }
 
 .secondary-header {
   text-align: center;
-  font-size: 36px;
+  font-size: 34px;
   padding: 10px;
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -25,8 +27,15 @@
   color: $dark-gray;
 }
 
-.secondary-subheader {
+.primary-subheader {
+  color: $homepage-yellow;
+  font-size: 26px
+}
 
+.secondary-subheader {
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 40px
 }
 
 .label {
@@ -48,4 +57,12 @@
 .centered-all-around {
   text-align: center;
   margin-top: 30%;
+}
+
+.details {
+  color: $dark-gray
+}
+
+.fine-print {
+  font-size: 9px;
 }

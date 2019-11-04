@@ -2,7 +2,7 @@
   <div class="spacer">
   </div>
   <div class="logins">
-    <h2>Resend unlock instructions</h2>
+    <h2 class="form-title">Resend unlock instructions</h2>
 
     <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -12,7 +12,7 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="actions">
+      <div class="actions login-button">
         <%= f.submit "Resend unlock instructions" %>
       </div>
     <% end %>

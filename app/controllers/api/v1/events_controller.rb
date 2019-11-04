@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApiController
   def index
-    render json: Event.all
+    render json: Event.where(user: current_user)
   end
 
   def show
@@ -46,6 +46,7 @@ class Api::V1::EventsController < ApiController
           CorrespondenceMailer.invitation_email(@event, @user, invitee, times_string).deliver_now
         end
 
+        flash[:notice] = "#{@event.event_name} successfully created! Invitations have been sent via email."
         render json: @event
       else
         render json: { error: @event.errors.full_messages }, status: :unprocessable_entity

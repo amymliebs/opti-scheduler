@@ -62,7 +62,9 @@ const EventShowContainer = (props) => {
 
   return(
     <div>
-      <button onClick={handleDeleteClick}>DELETE MY EVENT</button>
+      <div>
+      <button className="main-button" onClick={handleDeleteClick}>DELETE MY EVENT</button>
+      </div>
       <EventDetailsTile
         eventName={event.eventName}
         eventDescription={event.eventDescription}
@@ -71,6 +73,17 @@ const EventShowContainer = (props) => {
         rsvpDate={event.rsvpDate}
         rsvpStatus={event.rsvpStatus}
       />
+      <div className="complete-schedule">
+        <div className="primary-subheader centered">
+          Complete Schedule
+        </div>
+        <div className="schedule-pending">
+          Your schedule will appear here once it has been set.
+          <div>
+            <button className="main-button">CREATE MY SCHEDULE!</button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

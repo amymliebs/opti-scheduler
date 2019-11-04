@@ -1,5 +1,11 @@
 @import './colors';
 
+.yellow-strip {
+  background-color: $homepage-yellow;
+  height: 1.7em;
+  width: 100%
+}
+
 #flash-message {
   padding: 10px;
   background-color: $light-gray;

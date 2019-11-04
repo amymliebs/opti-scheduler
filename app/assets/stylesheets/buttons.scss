@@ -22,3 +22,48 @@
   background-color: $hover-blue;
   color: #F4F0E4;
 }
+
+.login-button input {
+  background-color: $homepage-yellow;
+  border-radius: 10px;
+  height: 2.5em;
+  width: auto;
+  padding: 10px 30px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.login-button input:hover {
+  background-color: #ebb838;
+  color: white;
+}
+
+.main-button {
+  margin-left: 30px;
+  background-color: white;
+  border-color: $homepage-yellow;
+  border-radius: 10px;
+  height: 2.5em;
+  width: auto;
+  padding: 10px 30px;
+  margin-top: 20px;
+}
+
+.main-button:hover, .main-button:focus {
+  background-color: $medium-yellow
+}
+
+.form-button {
+  margin-left: 30px;
+  background-color: $homepage-yellow;
+  border-color: $dark-gray;
+  border-radius: 10px;
+  height: 2.5em;
+  width: auto;
+  padding: 10px 30px;
+  margin-top: 20px;
+}
+
+.form-button:hover, .form-button:focus {
+  background-color: $medium-yellow
+}

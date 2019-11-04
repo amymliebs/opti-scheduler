@@ -16,11 +16,24 @@
 }
 
 .logins {
-  background-color: $dark-gray;
-  color: white;
-  width: 800px;
+  background-color: white;
+  color: $dark-gray;
+  border: 2px solid $homepage-yellow;
+  width: 550px;
   border-radius: 10px;
   text-align: justify;
   padding: 2em;
   margin: auto
 }
+
+.field {
+  margin-bottom: 14px
+}
+
+// .line-it-up {
+//   display: flex;
+// }
+//
+// .label {
+//   margin-right: 10px
+// }

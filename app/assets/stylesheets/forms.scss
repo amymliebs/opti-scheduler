@@ -15,3 +15,40 @@
 ::placeholder {
   font-size: 11px;
 }
+
+input, textarea {
+  background-color: #faf4e3;
+  width: 60%;
+  height: 2em;
+}
+
+input:focus, textarea:focus {
+  outline-color: $medium-yellow
+}
+
+.form-title {
+  margin-bottom: 30px
+}
+
+.event-form {
+  margin: 0px 40px;
+  margin-top: 60px;
+  width: 40%;
+  border-right: solid $dark-gray;
+  margin-left: 150px;
+}
+
+.form-field {
+  margin-bottom: 30px
+}
+
+.event-form input {
+  margin-left: 20px
+}
+
+.textarea-box {
+  margin-top: 8px;
+  margin-right: 10px;
+  min-height: 60px;
+  width: 90%
+}
