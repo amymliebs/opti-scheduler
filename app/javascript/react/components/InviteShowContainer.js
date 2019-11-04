@@ -38,7 +38,6 @@ const InviteShowContainer = (props) => {
       </div>
       <div className="seven wide column">
         <EventDetailsTile
-          eventName={event.eventName}
           eventDescription={event.eventDescription}
           location={event.location}
           eventDate={event.eventDate}

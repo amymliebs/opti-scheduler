@@ -24,10 +24,6 @@ describe ("EventDetailsTile", () => {
     )
   })
 
-  it("should say the name of the event", () => {
-    expect(wrapper.find('.primary-header').text()).toBe("July 26th Check-In")
-  })
-
   it("should say the description of the event", () => {
     expect(wrapper.find('.event-description').text()).toBe("Description: Please sign up for a time to check in.")
   })

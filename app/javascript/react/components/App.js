@@ -13,11 +13,11 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route
-          exact path="/welcome"
+          exact path="/"
           component={WelcomeContainer}
         />
         <Route
-          exact path="/"
+          exact path="/events"
           component={EventIndex}
         />
         <Route

@@ -8,7 +8,7 @@ const RSVPThankYou = (props) => {
       <div className="logo"><i className="far fa-clock"></i>ptiScheduler</div>
       <div className="spacer">
       </div>
-      <a className="big-sign-up" href="/welcome">Schedule events with OptiScheduler! &ensp; Click here for more information on getting started.</a>
+      <a className="big-sign-up" href="/">Schedule events with OptiScheduler! &ensp; Click here for more information on getting started.</a>
     </div>
   )
 }

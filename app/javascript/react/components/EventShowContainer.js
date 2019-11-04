@@ -73,7 +73,6 @@ const EventShowContainer = (props) => {
         </div>
         <div className="eight wide column">
           <EventDetailsTile
-            eventName={event.eventName}
             eventDescription={event.eventDescription}
             location={event.location}
             eventDate={event.eventDate}
