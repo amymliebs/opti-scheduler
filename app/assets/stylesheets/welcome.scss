@@ -3,7 +3,7 @@
 #welcome-page {
   background: image-url('welcome-background.jpg');
   min-width: 100%;
-  min-height: 100vh;
+  min-height: 96vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -15,12 +15,8 @@
   border-radius: 10px;
   width: auto;
   height: 400px;
-  margin-left: 90px;
-  margin-top: 100px;
-}
-
-.how-to-box:hover {
-  // background-color: $light-yellow
+  margin-left: 80px;
+  margin-top: 70px;
 }
 
 .user-question {

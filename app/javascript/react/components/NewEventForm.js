@@ -108,8 +108,8 @@ const NewEventForm = (props) => {
   }
 
   return(
-    <div>
-      <h2>New Event Window Form </h2>
+    <div className="event-form">
+      <h2 className="primary-header">New Event Window Form </h2>
 
       <form onSubmit={handleEventSubmit}>
         <ErrorList errors={errors} />

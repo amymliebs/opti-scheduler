@@ -15,3 +15,21 @@
 ::placeholder {
   font-size: 11px;
 }
+
+input, textarea {
+  background-color: #faf4e3;
+  width: 60%;
+  height: 2em;
+}
+
+input:focus, textarea:focus {
+  outline-color: $medium-yellow
+}
+
+.form-title {
+  margin-bottom: 30px
+}
+
+.event-form {
+  margin: 0px 40px
+}

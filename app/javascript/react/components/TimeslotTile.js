@@ -11,14 +11,16 @@ const TimeslotTile = (props) => {
   }
 
   return(
-    <label>
-      <input
-        type="checkbox"
-        name={props.timeslot}
-        onChange={handleCheckboxChange}
-      />
-        {props.timeslot}
-    </label>
+    <div className="checkbox">
+      <label>
+        <input
+          type="checkbox"
+          name={props.timeslot}
+          onChange={handleCheckboxChange}
+        />
+          {props.timeslot}
+      </label>
+    </div>
   )
 }
 

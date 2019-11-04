@@ -63,14 +63,17 @@ const EventShowContainer = (props) => {
   return(
     <div>
       <button onClick={handleDeleteClick}>DELETE MY EVENT</button>
-      <EventDetailsTile
-        eventName={event.eventName}
-        eventDescription={event.eventDescription}
-        location={event.location}
-        eventDate={event.eventDate}
-        rsvpDate={event.rsvpDate}
-        rsvpStatus={event.rsvpStatus}
-      />
+      <button>CREATE MY SCHEDULE!</button>
+      <div className="ui stackable grid">
+        <EventDetailsTile
+          eventName={event.eventName}
+          eventDescription={event.eventDescription}
+          location={event.location}
+          eventDate={event.eventDate}
+          rsvpDate={event.rsvpDate}
+          rsvpStatus={event.rsvpStatus}
+        />
+      </div>
     </div>
   )
 }
