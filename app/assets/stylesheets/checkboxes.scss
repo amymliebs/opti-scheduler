@@ -61,3 +61,30 @@
   padding-left: 40px;
   cursor: pointer;
 }
+
+.times {
+  margin-left: 10px;
+}
+
+.time {
+  border: solid 2px $dark-gray;
+  padding: 1em;
+  margin: 10px 10px;
+}
+
+.selected{
+  background-color: $homepage-yellow
+}
+
+.unselected {
+  background-color: $medium-yellow
+}
+
+.timeslots-label {
+  margin-bottom: 10px;
+  font-size: 16px
+}
+
+.below-timeslots {
+  margin-top: 40px
+}

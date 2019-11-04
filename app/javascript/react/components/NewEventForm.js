@@ -39,7 +39,7 @@ const NewEventForm = (props) => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["eventName", "invitees"]
+    const requiredFields = ["eventName", "eventDate", "rsvpDate", "invitees"]
     requiredFields.forEach(field => {
       if (newEvent[field].trim() === "") {
         submitErrors = {
@@ -154,7 +154,7 @@ const NewEventForm = (props) => {
           </div>
 
           <div className="form-field">
-            <label> Event Window Date
+            <label> Event Window Date *
               <DatePicker
                 className="centered"
                 name="eventDate"
@@ -167,7 +167,7 @@ const NewEventForm = (props) => {
           </div>
 
           <div className="form-field">
-            <label> RSVP by Date
+            <label> RSVP by Date *
               <DatePicker
                 className="centered"
                 name="rsvpDate"
@@ -181,7 +181,7 @@ const NewEventForm = (props) => {
           </div>
 
           <div className="form-field">
-            <label> Guests <br />
+            <label> Invitees * <br />
               <textarea
                 className="textarea-box"
                 name="invitees"

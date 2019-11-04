@@ -13,7 +13,7 @@
 }
 
 ::placeholder {
-  font-size: 11px;
+  font-size: 14px;
 }
 
 input, textarea {
@@ -58,4 +58,12 @@ input:focus, textarea:focus {
   margin-right: 10px;
   min-height: 60px;
   width: 90%
+}
+
+label {
+  font-size: 16px
+}
+
+.rsvp-submit, .move-it {
+  margin-left: 33%
 }

@@ -110,22 +110,36 @@ const RSVPForm = (props) => {
     return <Redirect to="/thankyou" />
   }
 
+  const handleTimeClick = (id) => {
+    if (selectedTimeslots.includes(id)) {
+      setSelectedTimeslots(selectedTimeslots.filter(timeslot => timeslot != id))
+    } else {
+      setSelectedTimeslots([...selectedTimeslots, id])
+    }
+  }
+
   let options = props.timeslots.map((time) => {
+    let selectionStatus = "unselected"
+    if (selectedTimeslots.includes(time.slot)) {
+      selectionStatus = "selected"
+    }
+
     return(
       <TimeslotTile
         key={time.slot}
+        timeslotId={time.id}
         timeslot={time.slot}
-        selectedTimeslots={selectedTimeslots}
-        setSelectedTimeslots={setSelectedTimeslots}
+        selectionStatus={selectionStatus}
+        handleTimeClick={handleTimeClick}
       />
     )
   })
 
   return(
-    <div className="fading-background">
+    <div>
       <div className="space-it">
       </div>
-      <h2 className="primary-subheader centered">RSVP with Your Availability </h2>
+      <h2 className="primary-subheader centered move-it">RSVP with Your Availability </h2>
 
       <form onSubmit={handleRSVPSubmit}>
         <ErrorList errors={errors} />
@@ -144,7 +158,7 @@ const RSVPForm = (props) => {
           </div>
 
           <div className="form-field">
-            <label> Last Name *
+            <label> Last Name
               <input
                 name="lastName"
                 type="text"
@@ -155,7 +169,7 @@ const RSVPForm = (props) => {
           </div>
 
           <div className="form-field">
-            <label> Email
+            <label> Email *
               <input
                 name="email"
                 type="text"
@@ -165,11 +179,14 @@ const RSVPForm = (props) => {
             </label>
           </div>
 
-          <div className="form-field">
-            {options}
+          <div className="timeslots-label form-field"> Available Times:&ensp;Select the times you are available to meet.  </div>
+          <div className="times column">
+            <div className="ui stackable grid">
+              {options}
+            </div>
           </div>
 
-          <div className="form-field">
+          <div className="below-timeslots form-field">
             <label> Note for host: (optional)
               <textarea
                 className="textarea-box"
@@ -177,14 +194,16 @@ const RSVPForm = (props) => {
                 rows="4"
                 onChange={handleFieldChange}
                 value={newRSVP.note}
-                placeholder="[Optional]  Write a note to the host regarding the meeting."
+                placeholder="(Optional)  Write a note to the host"
               />
             </label>
           </div>
         </div>
 
-        <div className="centered">
+        <div className="centered rsvp-submit">
           <input className="form-button" type="submit" value="RSVP!"/>
+        </div>
+        <div className="spacer">
         </div>
       </form>
     </div>
