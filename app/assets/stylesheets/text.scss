@@ -4,11 +4,17 @@
   font-size: 20px
 }
 
+hr {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, .1), rgba(255, 255, 255, 1), rgba(0, 0, 0, .1));
+}
+
 .primary-header {
   text-align: center;
   font-size: 40px;
   color: $dark-gray;
-  padding-top: 50px;
+  padding-top: 40px;
 }
 
 .secondary-header {
@@ -22,12 +28,13 @@
 }
 
 .primary-subheader {
-  color: $homepage-yellow
+  color: $homepage-yellow;
+  font-size: 26px
 }
 
 .secondary-subheader {
   text-align: center;
-  font-size: 20px;
+  font-size: 35px;
   margin-bottom: 40px
 }
 
@@ -54,4 +61,8 @@
 
 .details {
   color: $dark-gray
+}
+
+.fine-print {
+  font-size: 9px;
 }

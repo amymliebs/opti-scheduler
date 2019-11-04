@@ -19,14 +19,14 @@ const EventDetailsTile = (props) => {
 
   return(
     <div>
-      <h1 className="primary-header one column row">{props.eventName}</h1>
-      <div className="event-details two column row">
-        <p className="primary-subheader centered column"><b>Your Event Window Details</b></p>
-        <div className="details">
+      <h1 className="primary-header">{props.eventName}</h1>
+      <div className="event-details">
+        <p className="primary-subheader centered"><b>Your Event Window Details</b></p>
+        <div className="event-specifics">
           <p className="sub-text"><b>Location:</b> {props.location}</p>
           <p className="date"><b>Event Date:</b> {formattedEventDate}</p>
-          <p><b>Description:</b> {props.eventDescription}</p>
-          <p className="date"><b>Please RSVP by {formattedRsvpDate}</b></p>
+          <p className="event-description"><b>Description:</b> {props.eventDescription}</p>
+          <p className="date"><b>RSVP by {formattedRsvpDate}</b></p>
           <p id="rsvp-status"><b>Schedule status:</b> {props.rsvpStatus}</p>
         </div>
       </div>

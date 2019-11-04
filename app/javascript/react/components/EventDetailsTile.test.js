@@ -29,7 +29,7 @@ describe ("EventDetailsTile", () => {
   })
 
   it("should say the description of the event", () => {
-    expect(wrapper.find('.secondary-header').text()).toBe("Description: Please sign up for a time to check in.")
+    expect(wrapper.find('.event-description').text()).toBe("Description: Please sign up for a time to check in.")
   })
 
   it("should say the location of the event", () => {
@@ -41,7 +41,7 @@ describe ("EventDetailsTile", () => {
   })
 
   it("should say the RSVP date of the event", () => {
-    expect(wrapper.find('.date').at(1).text()).toBe("Please RSVP by 02-08-2019")
+    expect(wrapper.find('.date').at(1).text()).toBe("RSVP by 02-08-2019")
   })
 
   it("should display the rsvp status of the event", () => {

@@ -11,7 +11,7 @@ const TimeslotTile = (props) => {
   }
 
   return(
-    <div className="checkbox">
+    <span className="checkbox">
       <label>
         <input
           type="checkbox"
@@ -20,7 +20,7 @@ const TimeslotTile = (props) => {
         />
           {props.timeslot}
       </label>
-    </div>
+    </span>
   )
 }
 

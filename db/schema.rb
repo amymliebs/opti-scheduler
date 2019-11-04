@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_222128) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "rsvp_status", default: "schedule pending", null: false
+    t.string "rsvp_status", default: "Schedule pending", null: false
     t.string "location"
     t.index ["access_code"], name: "index_events_on_access_code"
     t.index ["user_id"], name: "index_events_on_user_id"

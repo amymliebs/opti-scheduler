@@ -1,6 +1,21 @@
 @import './colors';
 
 .event-details {
-//   margin-left: 150px;
+  margin-top: 60px;
+  width: 40%;
+  border-right: solid $dark-gray;
+  margin-left: 150px;
+}
+
+.event-specifics {
+  margin-top: 40px;
   font-size: 20px;
+  float: left
+}
+
+.complete-schedule {
+  margin-top: 60px;
+  width: 40%;
+  margin-right: 150px;
+  float: right
 }

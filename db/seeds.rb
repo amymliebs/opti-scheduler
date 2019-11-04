@@ -1,14 +1,11 @@
 users = User.create!([
-  { first_name: 'Jane', last_name: 'Doe', email: 'janedoe123@gmail.com', password: 'janedoepassword'},
-  { first_name: 'John', last_name: 'Doe', email: 'johndoe123@gmail.com', password: 'jondoepassword'},
-  { first_name: 'Julio', last_name: 'Martinez', email: 'juliomartinez123@gmail.com', password: 'juliomartinezpassword'}
+  { first_name: 'Jane', last_name: 'Doe', email: 'janedoe123@gmail.com', password: 'password'},
+  { first_name: 'John', last_name: 'Doe', email: 'johndoe123@gmail.com', password: 'password'},
+  { first_name: 'Julia', last_name: 'Martinez', email: 'juliamartinez123@gmail.com', password: 'password'}
   ])
 
 events = Event.create!([
-  { event_name: 'July 28th', event_description: 'I will be visiting from out of town. It will be a blast!', event_date: '2019-10-30', rsvp_date: '2019-01-30', access_code: '2j438c', user_id: 2 },
-  { event_name: 'Anna\'s San Diego Visit', event_date: '2020-01-01', rsvp_date: '2019-12-31', access_code: '348fjk', user_id: 1 }
-  ])
-
-timeslots = Timeslot.create!([
-  { slot: '1:00-2:00', event_id: 1 }
+  { event_name: 'Meeting with Jorge Feb. 26', event_description: 'I want to do some check-ins on how the big project is going. Please RSVP with all times you are available. Thank you.', event_date: '2020-02-26', rsvp_date: '2020-02-19', access_code: '2j438c', user_id: 2 },
+  { event_name: 'OptiCo. 1-on-1s', event_description: 'Please RSVP with all times you are available for a one-on-one follow-up meeting. Thanks!', event_date: '2020-03-01', rsvp_date: '2020-02-29', access_code: 'km38cj', user_id: 2 },
+  { event_name: 'Mid-Year Reviews', event_description: 'Please let me know when you are available for your midyear review.', event_date: '2020-03-24', rsvp_date: '2020-03-04', access_code: 'vm2mi8', user_id: 1 }
   ])
