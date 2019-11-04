@@ -108,12 +108,16 @@ const NewEventForm = (props) => {
   }
 
   return(
-    <div>
-      <h2 className="primary-header">New Event Window Form </h2>
+    <div className="fading-background">
+      <div className="ui stackable grid">
+        <div className="sixteen wide column">
+          <h2 className="primary-header">New Event Window Form </h2>
+          </div>
+
       <form onSubmit={handleEventSubmit}>
         <ErrorList errors={errors} />
-
-        <div className="event-form">
+        <div className="eight wide column">
+        <div className="rsvp-form">
           <div className="form-field">
             <label> Event Window Name *
               <input
@@ -189,17 +193,22 @@ const NewEventForm = (props) => {
             </label>
           </div>
         </div>
+      </div>
 
+      <div className="eight wide column">
         <div className="timeslots">
           <Timeslots
             timeslots={timeslots}
             setTimeslots={setTimeslots}
           />
           <div className="centered">
-          <input className="form-button" type="submit" value="Send Invitations!"/>
+            <input className="form-button" type="submit" value="Send Invitations!"/>
           </div>
         </div>
+      </div>
       </form>
+
+    </div>
     </div>
   )
 }

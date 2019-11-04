@@ -2,7 +2,7 @@
 
 .event-details {
   margin-top: 60px;
-  width: 40%;
+  width: 90%;
   border-right: solid $dark-gray;
   margin-left: 150px;
 }
@@ -10,12 +10,22 @@
 .event-specifics {
   margin-top: 40px;
   font-size: 20px;
-  float: left
+  float: left;
+  width: 90%
 }
 
 .complete-schedule {
-  margin-top: 60px;
-  width: 40%;
+  margin-top: 70px;
   margin-right: 150px;
-  float: right
+  float: right;
+  margin-bottom: 20px
+}
+
+.space-it {
+  margin-top: 60px
+}
+
+.schedule-pending {
+  margin-top: 40px;
+  font-size: 20px;
 }

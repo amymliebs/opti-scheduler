@@ -61,26 +61,37 @@ const EventShowContainer = (props) => {
   }
 
   return(
-    <div>
+    <div className="fading-background">
       <div>
-      <button className="main-button" onClick={handleDeleteClick}>DELETE MY EVENT</button>
+        <button className="main-button" onClick={handleDeleteClick}>
+          DELETE MY EVENT
+        </button>
       </div>
-      <EventDetailsTile
-        eventName={event.eventName}
-        eventDescription={event.eventDescription}
-        location={event.location}
-        eventDate={event.eventDate}
-        rsvpDate={event.rsvpDate}
-        rsvpStatus={event.rsvpStatus}
-      />
-      <div className="complete-schedule">
-        <div className="primary-subheader centered">
-          Complete Schedule
+      <div className="ui stackable grid">
+        <div className="sixteen wide column">
+          <h1 className="primary-header">{event.eventName}</h1>
         </div>
-        <div className="schedule-pending">
-          Your schedule will appear here once it has been set.
-          <div>
+        <div className="eight wide column">
+          <EventDetailsTile
+            eventName={event.eventName}
+            eventDescription={event.eventDescription}
+            location={event.location}
+            eventDate={event.eventDate}
+            rsvpDate={event.rsvpDate}
+            rsvpStatus={event.rsvpStatus}
+          />
+        </div>
+        <div className="eight wide column">
+          <div className="complete-schedule">
+            <div className="primary-subheader centered"><b>
+              Complete Schedule</b>
+            </div>
+            <div className="schedule-pending centered">
+              Your schedule will appear here once it has been set.
+            </div>
+            <div className="centered">
             <button className="main-button">CREATE MY SCHEDULE!</button>
+            </div>
           </div>
         </div>
       </div>

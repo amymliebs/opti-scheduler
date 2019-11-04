@@ -122,52 +122,70 @@ const RSVPForm = (props) => {
   })
 
   return(
-    <div>
-      <h2>RSVP with Your Availability </h2>
+    <div className="fading-background">
+      <div className="space-it">
+      </div>
+      <h2 className="primary-subheader centered">RSVP with Your Availability </h2>
 
       <form onSubmit={handleRSVPSubmit}>
         <ErrorList errors={errors} />
 
-        <label> First Name *
-          <input
-            name="firstName"
-            type="text"
-            onChange={handleFieldChange}
-            value={newRSVP.firstName}
-          />
-        </label>
+        <div className="rsvp-form">
 
-        <label> Last Name *
-          <input
-            name="lastName"
-            type="text"
-            onChange={handleFieldChange}
-            value={newRSVP.lastName}
-          />
-        </label>
+          <div className="form-field">
+            <label> First Name *
+              <input
+                name="firstName"
+                type="text"
+                onChange={handleFieldChange}
+                value={newRSVP.firstName}
+              />
+            </label>
+          </div>
 
-        <label> Email
-          <input
-            name="email"
-            type="text"
-            onChange={handleFieldChange}
-            value={newRSVP.email}
-          />
-        </label>
+          <div className="form-field">
+            <label> Last Name *
+              <input
+                name="lastName"
+                type="text"
+                onChange={handleFieldChange}
+                value={newRSVP.lastName}
+              />
+            </label>
+          </div>
 
-        {options}
+          <div className="form-field">
+            <label> Email
+              <input
+                name="email"
+                type="text"
+                onChange={handleFieldChange}
+                value={newRSVP.email}
+              />
+            </label>
+          </div>
 
-        <label> Note for host: (optional)
-          <textarea
-            name="note"
-            rows="4"
-            onChange={handleFieldChange}
-            value={newRSVP.note}
-            placeholder="[Optional]  Write a note to the host regarding the meeting."
-          />
-        </label>
+          <div className="form-field">
+            {options}
+          </div>
 
-        <input type="submit" value="RSVP!"/>
+          <div className="form-field">
+            <label> Note for host: (optional)
+              <textarea
+                className="textarea-box"
+                name="note"
+                rows="4"
+                onChange={handleFieldChange}
+                value={newRSVP.note}
+                placeholder="[Optional]  Write a note to the host regarding the meeting."
+              />
+            </label>
+          </div>
+        </div>
+
+        <div className="centered">
+          <input className="form-button" type="submit" value="RSVP!"/>
+        </div>
       </form>
     </div>
   )

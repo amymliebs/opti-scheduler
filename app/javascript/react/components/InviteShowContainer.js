@@ -32,21 +32,29 @@ const InviteShowContainer = (props) => {
   },[])
 
   return(
-    <div>
-      <EventDetailsTile
-        eventName={event.eventName}
-        eventDescription={event.eventDescription}
-        location={event.location}
-        eventDate={event.eventDate}
-        rsvpDate={event.rsvpDate}
-        rsvpStatus={event.rsvpStatus}
-      />
-      <RSVPForm
-        email={invitee.email}
-        inviteeCode={inviteeCode}
-        eventCode={eventCode}
-        timeslots={timeslots}
-      />
+    <div className="ui stackable grid fading-background">
+      <div className="sixteen wide column">
+        <h1 className="primary-header">{event.eventName}</h1>
+      </div>
+      <div className="seven wide column">
+        <EventDetailsTile
+          eventName={event.eventName}
+          eventDescription={event.eventDescription}
+          location={event.location}
+          eventDate={event.eventDate}
+          rsvpDate={event.rsvpDate}
+          rsvpStatus={event.rsvpStatus}
+        />
+      </div>
+
+      <div className="seven wide column">
+        <RSVPForm
+          email={invitee.email}
+          inviteeCode={inviteeCode}
+          eventCode={eventCode}
+          timeslots={timeslots}
+        />
+      </div>
     </div>
   )
 }

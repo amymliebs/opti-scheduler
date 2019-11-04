@@ -19,7 +19,6 @@ const EventDetailsTile = (props) => {
 
   return(
     <div>
-      <h1 className="primary-header">{props.eventName}</h1>
       <div className="event-details">
         <p className="primary-subheader centered"><b>Your Event Window Details</b></p>
         <div className="event-specifics">
