@@ -18,7 +18,10 @@ class Api::V1::AvailabilitiesController < ApiController
 
 
     this_event = Event.find(params[:id])
-    timeslots = this_event.timeslots
+    availabilities = this_event.timeslots.availabilities
+
+    event.Timeslots
+    loop through them and find availabilities for each (map them)
     counts = Hash.new(0)
     timeslots.each { |timeslot| counts[timeslot] += 1 }
     # => {"Jason" => 2, "Teresa" => 1, ....

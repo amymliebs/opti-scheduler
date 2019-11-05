@@ -84,7 +84,7 @@ const EventShowContainer = (props) => {
         <div className="sixteen wide column">
           <h1 className="primary-header">{event.eventName}</h1>
         </div>
-        <div className="eight wide column">
+        <div className="seven wide column">
           <EventDetailsTile
             eventDescription={event.eventDescription}
             location={event.location}
@@ -106,6 +106,8 @@ const EventShowContainer = (props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="spacer">
       </div>
     </div>
   )
