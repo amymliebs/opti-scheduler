@@ -3,8 +3,6 @@ import { Redirect } from "react-router-dom"
 import humps from 'humps'
 import _ from 'lodash'
 import ErrorList from "./ErrorList"
-import Timeslots from "../data/Timeslots.js"
-import CheckboxGroup from 'react-checkbox-group'
 import TimeslotTile from './TimeslotTile'
 
 const RSVPForm = (props) => {
