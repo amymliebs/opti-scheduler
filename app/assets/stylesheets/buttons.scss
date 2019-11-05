@@ -67,7 +67,8 @@
 }
 
 .main-button:hover, .main-button:focus {
-  background-color: $medium-yellow
+  background-color: $medium-yellow;
+  outline: 0
 }
 
 .form-button {
@@ -82,5 +83,6 @@
 }
 
 .form-button:hover, .form-button:focus {
-  background-color: $medium-yellow
+  background-color: $medium-yellow;
+  outline: 0
 }

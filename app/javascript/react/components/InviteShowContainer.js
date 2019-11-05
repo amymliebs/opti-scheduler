@@ -46,7 +46,7 @@ const InviteShowContainer = (props) => {
         />
       </div>
 
-      <div className="seven wide column">
+      <div className="seven wide column float right">
         <RSVPForm
           email={invitee.email}
           inviteeCode={inviteeCode}

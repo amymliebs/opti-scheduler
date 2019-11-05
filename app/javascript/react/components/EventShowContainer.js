@@ -57,7 +57,20 @@ const EventShowContainer = (props) => {
   }
 
   if (shouldRedirect){
-    return <Redirect to="/" />
+    return <Redirect to="/events" />
+  }
+
+  const handleScheduleCreation = () => {
+    let payload = {
+      event: {
+        eventName: event.id
+      },
+      times: {
+        slots: timeslots
+      }
+    }
+
+
   }
 
   return(
@@ -71,7 +84,7 @@ const EventShowContainer = (props) => {
         <div className="sixteen wide column">
           <h1 className="primary-header">{event.eventName}</h1>
         </div>
-        <div className="eight wide column">
+        <div className="seven wide column">
           <EventDetailsTile
             eventDescription={event.eventDescription}
             location={event.location}
@@ -89,10 +102,12 @@ const EventShowContainer = (props) => {
               Your schedule will appear here once it has been set.
             </div>
             <div className="centered">
-            <button className="main-button">CREATE MY SCHEDULE!</button>
+            <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
             </div>
           </div>
         </div>
+      </div>
+      <div className="spacer">
       </div>
     </div>
   )
