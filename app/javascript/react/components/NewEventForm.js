@@ -274,7 +274,7 @@ const NewEventForm = (props) => {
               />
             </form>
           </div>
-
+          
           </div>
         </div>
       </div>

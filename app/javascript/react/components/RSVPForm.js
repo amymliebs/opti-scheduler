@@ -139,53 +139,71 @@ const RSVPForm = (props) => {
       </div>
       <h2 className="primary-subheader centered move-it">RSVP with Your Availability </h2>
 
-      <form onSubmit={handleRSVPSubmit}>
+      <div className="ui large form">
         <ErrorList errors={errors} />
 
         <div className="rsvp-form">
 
-          <div className="form-field">
-            <label> First Name *
+          <div className="inline required field">
+            <label>First Name</label>
               <input
                 name="firstName"
                 type="text"
                 onChange={handleFieldChange}
                 value={newRSVP.firstName}
               />
-            </label>
           </div>
 
-          <div className="form-field">
-            <label> Last Name
-              <input
-                name="lastName"
-                type="text"
-                onChange={handleFieldChange}
-                value={newRSVP.lastName}
-              />
-            </label>
+          <div className="mini-space">
+          </div>
+          <div className="inline field">
+            <label>Last Name</label>
+            <input
+              name="lastName"
+              type="text"
+              onChange={handleFieldChange}
+              value={newRSVP.lastName}
+            />
           </div>
 
-          <div className="form-field">
-            <label> Email *
+          <div className="mini-space">
+          </div>
+          <div className="inline required field">
+            <label>Email</label>
               <input
                 name="email"
                 type="text"
                 onChange={handleFieldChange}
                 value={newRSVP.email}
               />
-            </label>
           </div>
 
-          <div className="timeslots-label form-field"> Available Times:&ensp;Select the times you are available to meet.  </div>
+          <div className="mini-space">
+          </div>
+          <div className="inline field">
+            <label>Cell phone number</label>
+              <input
+                name="phone"
+                type="text"
+                onChange={handleFieldChange}
+                value={newRSVP.phone}
+                placeholder="555-555-5555"                  className="centered"
+              />
+          </div>
+
+          <div className="mini-space">
+          </div>
+          <div className="timeslots-label required field"> Available Times:&ensp;Select the times you are available to meet.  </div>
           <div className="times column">
             <div className="ui stackable grid">
               {options}
             </div>
           </div>
 
-          <div className="below-timeslots form-field">
-            <label> Note for host: (optional)
+          <div className="spaced-gap">
+          </div>
+          <div className="below-timeslots field">
+            <label> Note for host: (optional)</label>
               <textarea
                 className="textarea-box"
                 name="note"
@@ -193,17 +211,18 @@ const RSVPForm = (props) => {
                 onChange={handleFieldChange}
                 value={newRSVP.note}
                 placeholder="(Optional)  Write a note to the host"
-              />
-            </label>
+              >
+            </textarea>
+
           </div>
         </div>
 
         <div className="centered rsvp-submit">
-          <input className="form-button" type="submit" value="RSVP!"/>
+          <input className="form-button" type="submit" value="RSVP"/>
         </div>
         <div className="spacer">
         </div>
-      </form>
+      </div>
     </div>
   )
 }
