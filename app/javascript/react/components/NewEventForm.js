@@ -162,9 +162,11 @@ const NewEventForm = (props) => {
       <h2 className="primary-header">New Event Window Form </h2>
       <div className="space-below">
       </div>
+      <div className="container new-form">
       <div className="ui large form">
         <ErrorList errors={errors} />
         <div className="left-column">
+
 
           <div className="inline required field">
             <label>Event Window Name</label>
@@ -274,10 +276,12 @@ const NewEventForm = (props) => {
               />
             </form>
           </div>
-          
           </div>
         </div>
       </div>
+      <div className="gap">
+      </div>
+    </div>
       <div className="spacer">
       </div>
     </div>

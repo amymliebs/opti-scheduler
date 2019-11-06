@@ -64,11 +64,13 @@
 }
 
 .main-button:hover, .main-button:focus, .form-button:hover, .form-button:focus {
-  background-color: $medium-yellow;
+  background-color: $homepage-yellow;
   outline: 0
 }
 
 .delete-it {
   margin-top: 40px;
-  margin-left: 30px
+  margin-right: 30px;
+  float: right;
+  background-color: $medium-yellow
 }

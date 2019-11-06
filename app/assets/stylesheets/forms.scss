@@ -38,7 +38,6 @@ input:focus, textarea:focus {
   margin: 0px 40px;
   margin-top: 60px;
   width: 100%;
-  margin-left: 150px;
 }
 
 .form-field {
@@ -61,7 +60,7 @@ label {
 }
 
 .rsvp-submit, .move-it {
-  margin-left: 33%
+  margin-left: 36%
 }
 
 .timeslots-label {
@@ -73,4 +72,12 @@ label {
 .sub-label {
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: .92857143em;
+}
+
+.new-form {
+  margin-right: 60px
+}
+
+.limited-box {
+  width: 90%
 }

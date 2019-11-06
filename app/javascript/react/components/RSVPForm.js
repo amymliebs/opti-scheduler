@@ -137,7 +137,7 @@ const RSVPForm = (props) => {
     <div>
       <div className="space-it">
       </div>
-      <h2 className="primary-subheader centered move-it">RSVP with Your Availability </h2>
+      <h2 className="primary-subheader centered">RSVP with Your Availability </h2>
 
       <div className="ui large form">
         <ErrorList errors={errors} />
@@ -202,7 +202,7 @@ const RSVPForm = (props) => {
 
           <div className="spaced-gap">
           </div>
-          <div className="below-timeslots field">
+          <div className="below-timeslots field limited-box">
             <label> Note for host: (optional)</label>
               <textarea
                 className="textarea-box"
@@ -217,7 +217,7 @@ const RSVPForm = (props) => {
           </div>
         </div>
 
-        <div className="centered rsvp-submit">
+        <div className="rsvp-submit">
           <form onSubmit={handleRSVPSubmit}>
             <input
               className="form-button"

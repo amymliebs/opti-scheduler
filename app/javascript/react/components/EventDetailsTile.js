@@ -27,6 +27,7 @@ const EventDetailsTile = (props) => {
           <p className="event-description"><b>Description:</b> {props.eventDescription}</p>
           <p className="date"><b>RSVP by {formattedRsvpDate}</b></p>
           <p id="rsvp-status"><b>Schedule status:</b> {props.rsvpStatus}</p>
+          <div className="space-below"></div>
         </div>
       </div>
     </div>
