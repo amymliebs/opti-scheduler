@@ -25,6 +25,12 @@ const EventIndex = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+
+  let loaderStatus = "active"
+  if (events == []) {
+    loaderStatus = "disabled"
+  }
+
   const eventTiles = events.map((event) => {
     return(
       <EventNameTile
@@ -41,6 +47,7 @@ const EventIndex = (props) => {
     <div className="index-page">
       <h3 className="primary-header">My Event Windows</h3>
       <h4 className="secondary-subheader">Select the name of an event to view its details</h4>
+
       <div className="ui stackable grid centered">
         {eventTiles}
       </div>

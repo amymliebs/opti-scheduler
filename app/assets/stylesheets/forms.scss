@@ -31,14 +31,10 @@ input:focus, textarea:focus {
 }
 
 .event-form {
-  margin: 0px 40px;
-  margin-top: 60px;
-  width: 100%;
   border-right: solid $dark-gray;
-  margin-left: 150px;
 }
 
-.rsvp-form {
+.rsvp-form, .event-form {
   margin: 0px 40px;
   margin-top: 60px;
   width: 100%;
@@ -61,7 +57,7 @@ input:focus, textarea:focus {
 }
 
 label {
-  font-size: 16px
+  font-size: 16px;
 }
 
 .rsvp-submit, .move-it {
