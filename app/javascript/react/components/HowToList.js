@@ -7,16 +7,13 @@ const HowToList = (props) => {
         <div className="four wide column">
         </div>
         <div className="how-to-box three wide column" id="how-to-one">
-          <div className="secondary-header">Create Your Event Window</div>
-          <img className="preview-image"></img>
+          <div className="first-box secondary-header">Create Your Event Window</div>
         </div>
         <div className="how-to-box three wide column" id="how-to-two">
-          <div className="secondary-header">Attendees RSVP with Availabilities</div>
-          <img className="preview-image"></img>
+          <div className="box secondary-header">Attendees RSVP with Availabilities</div>
         </div>
         <div className="how-to-box three wide column" id="how-to-three">
-          <div className="secondary-header">OptiScheduler Makes Your Schedule!</div>
-          <img className="preview-image"></img>
+          <div className="box secondary-header">OptiScheduler Makes Your Schedule!</div>
         </div>
       </div>
     </div>
