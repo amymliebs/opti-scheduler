@@ -6,12 +6,12 @@
     </div>
     <br />
     <div>
-      <span>Event window name:  <%= @event.event_name %></span>
+      <span>Event window name:&ensp;<%= @event.event_name %></span>
       <br />
-      <span>Event date:  <%= @event.event_date.strftime("%b. %d, %Y") %></span>
+      <span>Event date:&ensp;<%= @event.event_date.strftime("%b. %d, %Y") %></span>
       <br />
       <% if @event.event_description != "" %>
-        <span>Description:  <%= @event.event_description %></span>
+        <span>Description:&ensp;<%= @event.event_description %></span>
       <%- end -%>
     </div>
     <br />
@@ -23,6 +23,8 @@
     </div>
   <br/>
   <%= link_to 'Click here', @url, :class => 'centered' %> to RSVP with your availability!
+  <br />
+  <br />
   <br />
   <br />
   <span class="fine-print">

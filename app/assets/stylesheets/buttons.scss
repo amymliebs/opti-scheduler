@@ -2,7 +2,6 @@
 
 .attention-button, .big-sign-up {
   background-color: $button-blue;
-  margin-top: 90em;
   border-radius: 90px;
   color: white;
   border: 3px solid $light-gray;
@@ -14,12 +13,14 @@
   font-size: 20px;
   float: right;
   width: 330px;
-  margin-right: 25%
+  margin-top: 80px;
+  margin-right: 24%
 }
 
 .big-sign-up {
   font-size: 16px;
   width: 500px;
+  margin-top: 90em;
 }
 
 .attention-button:hover, .big-sign-up:hover {

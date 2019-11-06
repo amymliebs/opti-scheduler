@@ -58,7 +58,6 @@ const InviteShowContainer = (props) => {
           eventCode={eventCode}
           timeslots={timeslots}
         />
-
       </div>
     </div>
     <div className="spacer">
