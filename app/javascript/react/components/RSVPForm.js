@@ -218,7 +218,13 @@ const RSVPForm = (props) => {
         </div>
 
         <div className="centered rsvp-submit">
-          <input className="form-button" type="submit" value="RSVP"/>
+          <form onSubmit={handleRSVPSubmit}>
+            <input
+              className="form-button"
+              type="submit"
+              value="RSVP"
+            />
+          </form>
         </div>
         <div className="spacer">
         </div>
