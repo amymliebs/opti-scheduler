@@ -28,7 +28,13 @@
 }
 
 .fading-background {
-  background-color: #e6e8eb;
+  background: image-url('open-planner.jpg');
+  min-width: 100%;
+  min-height: 96vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
 }
 
 .spacer {
@@ -42,4 +48,16 @@
 
 .space-below {
   height: 4em;
+}
+
+.spaced-gap {
+  height: 2em;
+}
+
+.mini-space {
+  height: .8em;
+}
+
+.to-align {
+  height: 1em;
 }
