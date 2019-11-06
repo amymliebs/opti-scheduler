@@ -107,12 +107,10 @@ const EventShowContainer = (props) => {
     return <Redirect to="/thankyou" />
   }
 
-
-
   return(
     <div className="fading-background">
       <div>
-        <button className="main-button" onClick={handleDeleteClick}>
+        <button className="delete-it main-button" onClick={handleDeleteClick}>
           DELETE MY EVENT
         </button>
       </div>
@@ -139,6 +137,7 @@ const EventShowContainer = (props) => {
             </div>
             <div className="centered">
             <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
+            <button className="main-button">TEXT A REMINDER</button>
             </div>
           </div>
         </div>

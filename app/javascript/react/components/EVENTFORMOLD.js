@@ -130,7 +130,7 @@ const NewEventForm = (props) => {
     '8:00-9:00pm',
     '9:00-10:00pm',
     '10:00-11:00pm',
-    '11:00pm-12:00pm'
+    '11:00pm-12:00am'
   ]
 
   const handleTimeClick = (slot) => {
@@ -159,15 +159,14 @@ const NewEventForm = (props) => {
 
   return(
     <div className="fading-background">
-      <div className="">
-        <div className="">
+      <div className="ui stackable grid">
+        <div className="sixteen wide column">
           <h2 className="primary-header">New Event Window Form </h2>
         </div>
-        <div className="space-below"></div>
 
         <form onSubmit={handleEventSubmit}>
           <ErrorList errors={errors} />
-          <div className="left-column">
+          <div className="seven wide column">
             <div className="form-field">
               <label> Event Window Name *
                 <input
@@ -244,13 +243,12 @@ const NewEventForm = (props) => {
             </div>
           </div>
 
-          <div className="right-column">
+          <div className="seven wide column float right">
             <div className="timeslots-label form-field"> Available Times:&ensp;Select the times you are available to meet. These times set the window available for your invitees. </div>
             <div className="times column">
               <div className="ui stackable grid">
                 {times}
               </div>
-              <div className="space-below"></div>
               <div className="centered">
                 <input className="form-button" type="submit" value="Send Invitations!"/>
               </div>

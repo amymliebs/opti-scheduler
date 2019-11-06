@@ -28,9 +28,18 @@
 }
 
 .fading-background {
-  background-color: #dce0e6;
-  min-width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
+  background-color: #e6e8eb;
+}
+
+.spacer {
+  height: 8em;
+  width: 100%
+}
+
+.space-it {
+  margin-top: 20px;
+}
+
+.space-below {
+  height: 4em;
 }
