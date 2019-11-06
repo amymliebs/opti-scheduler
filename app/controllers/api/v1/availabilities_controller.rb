@@ -1,7 +1,8 @@
 class Api::V1::AvailabilitiesController < ApiController
   before_action :authenticate_user!
 
-  def update
+
+
     # times = thisevent.timeslots
     # least_availability_timeslot = {}
     #   times.each do |time|
@@ -17,6 +18,9 @@ class Api::V1::AvailabilitiesController < ApiController
     #   timeslots << timeslot
 
 
+
+
+
     this_event = Event.find(params[:id])
     availabilities = this_event.timeslots.availabilities
 
@@ -26,6 +30,10 @@ class Api::V1::AvailabilitiesController < ApiController
     timeslots.each { |timeslot| counts[timeslot] += 1 }
     # => {"Jason" => 2, "Teresa" => 1, ....
 
+
+    timeslot_objects = params[:times][:slots]
+    counts = Hash.new(0)
+    timeslot_objects.each { |timeslot| counts[timeslot] += 1 }
 
     # Find the timeslots of this event
     # Count how many availabilities of each timeslot. replace focus-slot value if it is less than the existing focus-slot.

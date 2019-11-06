@@ -8,6 +8,7 @@ const EventShowContainer = (props) => {
   const[event, setEvent] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [timeslots, setTimeslots] = useState([])
+  const [availabilities, setAvailabilities] = useState([])
   let eventCode = props.match.params.eventCode
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const EventShowContainer = (props) => {
       let thisEvent = humps.camelizeKeys(body)
       setEvent(thisEvent.event)
       setTimeslots(thisEvent.timeslots)
+      setAvailabilities(thisEvent.availabilities)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
@@ -60,18 +62,52 @@ const EventShowContainer = (props) => {
     return <Redirect to="/events" />
   }
 
-  const handleScheduleCreation = () => {
+  const handleScheduleCreation = (action) => {
     let payload = {
       event: {
-        eventName: event.id
+        eventId: event.id
       },
       times: {
         slots: timeslots
+      },
+      availableTimes: {
+        possibilities: availabilities
       }
     }
 
-
+    createSchedule(payload)
   }
+
+  const createSchedule = (payload) => {
+    fetch(`/api/v1/events/${eventCode}/create_schedule`, {
+      method: "PATCH",
+      body: JSON.stringify(humps.decamelizeKeys(payload)),
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json"
+      }
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(persistedData => {
+      setShouldRedirect(true)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  if (shouldRedirect) {
+    return <Redirect to="/thankyou" />
+  }
+
+
 
   return(
     <div className="fading-background">

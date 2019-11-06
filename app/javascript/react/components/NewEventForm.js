@@ -38,7 +38,7 @@ const NewEventForm = (props) => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["eventName", "eventDate", "rsvpDate", "invitees"]
+    const requiredFields = ["eventName", "invitees"]
     requiredFields.forEach(field => {
       if (newEvent[field].trim() === "") {
         submitErrors = {
@@ -103,7 +103,7 @@ const NewEventForm = (props) => {
   }
 
   if (shouldRedirect) {
-    return <Redirect to="/" />
+    return <Redirect to="/events" />
   }
 
   const slots = [
@@ -166,7 +166,7 @@ const NewEventForm = (props) => {
 
         <form onSubmit={handleEventSubmit}>
           <ErrorList errors={errors} />
-          <div className="seven wide column rsvp-form">
+          <div className="seven wide column">
             <div className="form-field">
               <label> Event Window Name *
                 <input
@@ -244,7 +244,8 @@ const NewEventForm = (props) => {
           </div>
 
           <div className="seven wide column float right">
-            <div className="timeslots">
+            <div className="timeslots-label form-field"> Available Times:&ensp;Select the times you are available to meet. These times set the window available for your invitees. </div>
+            <div className="times column">
               <div className="ui stackable grid">
                 {times}
               </div>
