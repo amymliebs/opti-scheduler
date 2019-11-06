@@ -36,7 +36,9 @@ const InviteShowContainer = (props) => {
       <div className="sixteen wide column">
         <h1 className="primary-header">{event.eventName}</h1>
       </div>
-      <div className="seven wide column">
+      <div className="containerL">
+      <div className="eight wide column">
+        <div>
         <EventDetailsTile
           eventDescription={event.eventDescription}
           location={event.location}
@@ -45,8 +47,11 @@ const InviteShowContainer = (props) => {
           rsvpStatus={event.rsvpStatus}
         />
       </div>
+      </div>
+      </div>
 
-      <div className="seven wide column float right">
+      <div className="eight wide column float right">
+        <div className="containerR">
         <RSVPForm
           email={invitee.email}
           inviteeCode={inviteeCode}
@@ -54,6 +59,10 @@ const InviteShowContainer = (props) => {
           timeslots={timeslots}
         />
       </div>
+    </div>
+    <div className="spacer">
+    </div>
+
     </div>
   )
 }

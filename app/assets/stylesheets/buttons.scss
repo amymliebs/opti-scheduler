@@ -2,7 +2,6 @@
 
 .attention-button, .big-sign-up {
   background-color: $button-blue;
-  margin-top: 90em;
   border-radius: 90px;
   color: white;
   border: 3px solid $light-gray;
@@ -14,12 +13,14 @@
   font-size: 20px;
   float: right;
   width: 330px;
-  margin-right: 25%
+  margin-top: 80px;
+  margin-right: 24%
 }
 
 .big-sign-up {
   font-size: 16px;
   width: 500px;
+  margin-top: 90em;
 }
 
 .attention-button:hover, .big-sign-up:hover {
@@ -48,11 +49,12 @@
   height: 2.5em;
   width: auto;
   padding: 10px 30px;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 
 .form-button {
   background-color: $homepage-yellow;
-  border-color: $dark-gray;
   margin-top: 20px;
 }
 
@@ -63,11 +65,13 @@
 }
 
 .main-button:hover, .main-button:focus, .form-button:hover, .form-button:focus {
-  background-color: $medium-yellow;
+  background-color: $homepage-yellow;
   outline: 0
 }
 
 .delete-it {
   margin-top: 40px;
-  margin-left: 30px
+  margin-right: 30px;
+  float: right;
+  background-color: $medium-yellow
 }

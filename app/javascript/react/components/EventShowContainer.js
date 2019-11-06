@@ -109,16 +109,13 @@ const EventShowContainer = (props) => {
 
   return(
     <div className="fading-background">
-      <div>
-        <button className="delete-it main-button" onClick={handleDeleteClick}>
-          DELETE MY EVENT
-        </button>
-      </div>
       <div className="ui stackable grid">
         <div className="sixteen wide column">
           <h1 className="primary-header">{event.eventName}</h1>
         </div>
-        <div className="seven wide column">
+        <div className="gap"></div>
+
+        <div className="seven wide column container">
           <EventDetailsTile
             eventDescription={event.eventDescription}
             location={event.location}
@@ -127,7 +124,7 @@ const EventShowContainer = (props) => {
             rsvpStatus={event.rsvpStatus}
           />
         </div>
-        <div className="eight wide column">
+        <div className="seven wide column container">
           <div className="complete-schedule">
             <div className="primary-subheader centered"><b>
               Complete Schedule</b>
@@ -141,6 +138,13 @@ const EventShowContainer = (props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="gap">
+      </div>
+      <div>
+        <button className="delete-it main-button" onClick={handleDeleteClick}>
+          DELETE MY EVENT
+        </button>
       </div>
       <div className="spacer">
       </div>

@@ -3,7 +3,7 @@
 .event-details {
   margin-top: 20px;
   width: 90%;
-  margin-left: 150px;
+  margin-left: 60px;
 }
 
 .event-specifics {
@@ -19,24 +19,21 @@
 }
 
 .schedule-pending {
-  margin-top: 40px;
+  margin-top: 80px;
   font-size: 20px;
 }
 
 .left-column {
   margin-top: 20px;
   width: 40%;
-  margin-left: 150px;
+  margin-left: 80px;
   margin-right: 100px;
   float: left
 }
 
 .right-column {
   margin-left: 50px;
-  margin-right: 50px;
 }
-
-
 
 .index-page {
   background: image-url('desk.jpg');
@@ -48,7 +45,6 @@
 }
 
 .index-tile {
-  // border: 3px solid $light-gray;
   background-color: $medium-yellow;
   opacity: .95;
   border-radius: 9px;
@@ -73,4 +69,23 @@
 .rsvp-status {
   text-align: center;
   margin: 10px;
+}
+
+.container, .containerR, .containerL {
+  background: rgba(255, 235, 173, .7);
+  color: $dark-gray;
+  border: 2px solid $homepage-yellow;
+  margin-left: 60px;
+  border-radius: 60px;
+  padding: 2em;
+}
+
+.containerR {
+  margin-left: 10%;
+  width: 90%
+}
+
+.containerL {
+  margin-top: 1em;
+  width: 42%
 }
