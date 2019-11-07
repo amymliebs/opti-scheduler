@@ -83,11 +83,9 @@ class Api::V1::EventsController < ApiController
 
     while scheduling_needed
       scheduling_needed = false
-
       timeslot_to_fill = least_available(availabilities_by_timeslot)
       schedule_slot = schedule_availability(timeslot_to_fill)
       availabilities_remaining = destroy_overlap(availabilities_by_timeslot, timeslot_to_fill)
-
       availabilities_remaining.flatten.each do |remaining_timeslot|
         if remaining_timeslot[:status] != "scheduled"
           scheduling_needed = true
@@ -105,7 +103,7 @@ class Api::V1::EventsController < ApiController
   def least_available(event_timeslots)
     fewest_availabilities = nil
     event_timeslots.each do |slot_availabilities|
-      if fewest_availabilities.nil? && slot_availabilities.length > 0
+      if fewest_availabilities.nil? && slot_availabilities.length > 0 && (slot_availabilities[0][:status] != "scheduled")
         fewest_availabilities = slot_availabilities
       elsif !fewest_availabilities.nil? && slot_availabilities.length > 0 && (slot_availabilities.length < fewest_availabilities.length) && (slot_availabilities[0][:status] != "scheduled")
         fewest_availabilities = slot_availabilities
@@ -116,15 +114,15 @@ class Api::V1::EventsController < ApiController
 
   def schedule_availability(timeslot)
     schedule_me = timeslot.first
-    schedule_me[:status] =  "scheduled"
+    schedule_me[:status] = "scheduled"
     availability_record = Availability.find(schedule_me[:id])
-    availability_record.update!(status: "scheduled")
+    availability_record.update_attributes(status: "scheduled")
   end
 
   def destroy_overlap(remaining_availabilities, scheduled_slot)
     remaining_availabilities.each do |slot_availabilities|
       slot_availabilities.delete_if do |slot|
-        if (slot[:invitee_id] == scheduled_slot.first[:invitee_id] || slot[:timeslot_id] == scheduled_slot.first[:timeslot_id]) && slot[:status] == "available"
+        if (slot[:invitee_id] == scheduled_slot.first[:invitee_id] || slot[:timeslot_id] == scheduled_slot.first[:timeslot_id]) && (slot[:status] == "available")
           record_to_destroy = Availability.find(slot[:id])
           record_to_destroy.destroy
           true
