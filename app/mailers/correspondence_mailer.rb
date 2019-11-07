@@ -24,7 +24,7 @@ class CorrespondenceMailer < ApplicationMailer
 
     mail(
       bcc: @invitee.email,
-      subject: "#{@user.first_name} #{@user.last_name} Has Invited You to an Event: '#{@event.event_name}!' Please RSVP"
+      subject: "Please RSVP! #{@user.first_name} #{@user.last_name} Has Invited You to an Event: '#{@event.event_name}!'"
     )
   end
 end

@@ -76,32 +76,38 @@ class Api::V1::EventsController < ApiController
 
   def create_schedule
     availabilities_by_timeslot = params[:available_times][:possibilities]
+    this_event = params[:event][:event_id]
+    event_times = params[:times][:slots]
 
     scheduling_needed = true
 
     while scheduling_needed
       scheduling_needed = false
 
-      find_timeslot_to_fill = least_available(availabilities_by_timeslot)
+      timeslot_to_fill = least_available(availabilities_by_timeslot)
+      schedule_slot = schedule_availability(timeslot_to_fill)
+      availabilities_remaining = destroy_overlap(availabilities_by_timeslot, timeslot_to_fill)
 
-      schedule_slot = schedule_availability(find_timeslot_to_fill)
-
-      delete_unneeded_availabilities = destroy_overlap(availabilities_by_timeslot)
-
-      continue_scheduling = continue_assigning(availabilities_by_timeslot)
+      availabilities_remaining.flatten.each do |remaining_timeslot|
+        if remaining_timeslot[:status] != "scheduled"
+          scheduling_needed = true
+        end
+      end
     end
+
+    render json: {
+      events: Event.all
+    }
   end
 
   private
 
   def least_available(event_timeslots)
     fewest_availabilities = nil
-    binding.pry
     event_timeslots.each do |slot_availabilities|
       if fewest_availabilities.nil? && slot_availabilities.length > 0
         fewest_availabilities = slot_availabilities
-      end
-      if !fewest_availabilities.nil? && slot_availabilities.length > 0 && (slot_availabilities.length < fewest_availabilities.length) && (slot_availabilities[0][:status] != "scheduled")
+      elsif !fewest_availabilities.nil? && slot_availabilities.length > 0 && (slot_availabilities.length < fewest_availabilities.length) && (slot_availabilities[0][:status] != "scheduled")
         fewest_availabilities = slot_availabilities
       end
     end
@@ -115,31 +121,14 @@ class Api::V1::EventsController < ApiController
     availability_record.update!(status: "scheduled")
   end
 
-  def destroy_overlap(remaining_availabilities)
+  def destroy_overlap(remaining_availabilities, scheduled_slot)
     remaining_availabilities.each do |slot_availabilities|
-      slot_availabilities.each do |slot|
-        matching_timeslots = Availability.where(timeslot_id: slot[:timeslot_id]).to_a
-        matching_invitee = Availability.where(invitee_id: slot[:invitee_id]).to_a
-        matches = matching_timeslots.concat(matching_invitee)
-        matches.each do |matching_slot|
-          binding.pry
-          if matching_slot[:status] == "available"
-            binding.pry
-            record_to_destroy = Availability.find(matching_slot[:id])
-            record_to_destroy.destroy
-            remaining_availabilities.delete(matching_slot)
-          end
+      slot_availabilities.delete_if do |slot|
+        if (slot[:invitee_id] == scheduled_slot.first[:invitee_id] || slot[:timeslot_id] == scheduled_slot.first[:timeslot_id]) && slot[:status] == "available"
+          record_to_destroy = Availability.find(slot[:id])
+          record_to_destroy.destroy
+          true
         end
-      end
-    end
-    remaining_availabilities
-  end
-
-  def continue_assigning(all_availabilities)
-    binding.pry
-    all_availabilities.flatten.each do |remaining_timeslot|
-      if remaining_timeslot[:status] != "scheduled"
-        scheduling_needed = true
       end
     end
   end
