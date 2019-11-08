@@ -6,22 +6,28 @@ class Api::V1::EventsController < ApiController
   def show
     event = Event.find_by(access_code: params[:id])
 
-    invitees_collection = []
-
     invitees_collection = event.invitees.map do |invitee|
-      { invitee: {
-          invitee_id: invitee.id,
-          name: invitee.full_name,
-          email: invitee.email,
-          scheduled_slot: Timeslot.find_by(id: invitee.availabilities[0].timeslot_id).slot
+      if invitee.availabilities.length > 0
+        { invitee: {
+            invitee_id: invitee.id,
+            name: invitee.full_name,
+            email: invitee.email,
+            scheduled_slot: Timeslot.find_by(id: invitee.availabilities[0].timeslot_id).slot
+          }
         }
-      }
+      end
     end
 
-    render json: {
-      event: event,
-      invitees: invitees_collection
-    }
+    if invitees_collection.length == 1 && invitees_collection.first.nil?
+      render json: {
+        event: event
+      }
+    else
+      render json: {
+        event: event,
+        invitees: invitees_collection
+      }
+    end
   end
 
   def create

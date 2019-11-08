@@ -28,9 +28,11 @@ const EventShowContainer = (props) => {
     .then(body => {
       let thisEvent = humps.camelizeKeys(body)
       setEvent(thisEvent.event)
-      setTimeslots(thisEvent.timeslots)
-      setAvailabilities(thisEvent.availabilities)
-      setInvitees(thisEvent.invitees)
+      if (thisEvent.timeslots) {
+        setTimeslots(thisEvent.timeslots)
+        setAvailabilities(thisEvent.availabilities)
+        setInvitees(thisEvent.invitees)
+      }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
@@ -106,6 +108,13 @@ const EventShowContainer = (props) => {
     return <Redirect to="/events" />
   }
 
+  let schedulingButton
+  if (timeslots != []) {
+    schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
+  } else {
+    schedulingButton = <button className="main-button">TEXT A REMINDER</button>
+  }
+
   let scheduledMeetings = invitees.map((inviteeDetails) => {
     if (inviteeDetails.invitee.scheduledSlot) {
       return(
@@ -145,11 +154,15 @@ const EventShowContainer = (props) => {
               Your schedule will appear here once it has been set.
             </div>
             <div className="">
-            <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
-            <button className="main-button">TEXT A REMINDER</button>
             <div className="gap">
             </div>
             <div className="ui two column centered grid">
+              <div>
+                {schedulingButton}
+              </div>
+              <div className="gap">
+              </div>
+              <div className="centered row">
               <table className="ui yellow collapsing celled table">
                 <thead>
                   <tr>
@@ -162,6 +175,7 @@ const EventShowContainer = (props) => {
                   {scheduledMeetings}
                 </tbody>
               </table>
+            </div>
             </div>
             </div>
           </div>
