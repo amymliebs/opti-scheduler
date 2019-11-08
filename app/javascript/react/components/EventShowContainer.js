@@ -3,12 +3,14 @@ import { Redirect } from "react-router-dom"
 import humps from 'humps'
 import EventNameTile from './EventNameTile'
 import EventDetailsTile from './EventDetailsTile'
+import ScheduledTimeTile from './ScheduledTimeTile'
 
 const EventShowContainer = (props) => {
   const[event, setEvent] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [timeslots, setTimeslots] = useState([])
   const [availabilities, setAvailabilities] = useState([])
+  const [invitees, setInvitees] = useState([])
   let eventCode = props.match.params.eventCode
 
   useEffect(() => {
@@ -28,6 +30,7 @@ const EventShowContainer = (props) => {
       setEvent(thisEvent.event)
       setTimeslots(thisEvent.timeslots)
       setAvailabilities(thisEvent.availabilities)
+      setInvitees(thisEvent.invitees)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
@@ -56,10 +59,6 @@ const EventShowContainer = (props) => {
 
   const handleDeleteClick = () => {
     deleteEvent(eventCode)
-  }
-
-  if (shouldRedirect){
-    return <Redirect to="/events" />
   }
 
   const handleScheduleCreation = (action) => {
@@ -98,14 +97,27 @@ const EventShowContainer = (props) => {
     })
     .then(response => response.json())
     .then(persistedData => {
-      setShouldRedirect(true)
+      setShouldRedirect(false)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   if (shouldRedirect) {
-    return <Redirect to="/thankyou" />
+    return <Redirect to="/events" />
   }
+
+  let scheduledMeetings = invitees.map((inviteeDetails) => {
+    if (inviteeDetails.invitee.scheduledSlot) {
+      return(
+        <ScheduledTimeTile
+          key={inviteeDetails.invitee.inviteeId}
+          name={inviteeDetails.invitee.name}
+          email={inviteeDetails.email}
+          timeslot={inviteeDetails.invitee.scheduledSlot}
+        />
+      )
+    }
+  })
 
   return(
     <div className="fading-background">
@@ -132,9 +144,25 @@ const EventShowContainer = (props) => {
             <div className="schedule-pending centered">
               Your schedule will appear here once it has been set.
             </div>
-            <div className="centered">
+            <div className="">
             <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
             <button className="main-button">TEXT A REMINDER</button>
+            <div className="gap">
+            </div>
+            <div className="ui two column centered grid">
+              <table className="ui yellow collapsing celled table">
+                <thead>
+                  <tr>
+                    <th>Invitee</th>
+                    <th>Email Address</th>
+                    <th>Meeting Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scheduledMeetings}
+                </tbody>
+              </table>
+            </div>
             </div>
           </div>
         </div>
