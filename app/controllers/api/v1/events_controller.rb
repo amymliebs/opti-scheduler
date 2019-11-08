@@ -6,16 +6,21 @@ class Api::V1::EventsController < ApiController
   def show
     event = Event.find_by(access_code: params[:id])
 
-    event_availabilities = []
-    event.timeslots.each do |timeslot|
-      availability = timeslot.availabilities
-      event_availabilities << availability
+    invitees_collection = []
+
+    invitees_collection = event.invitees.map do |invitee|
+      { invitee: {
+          invitee_id: invitee.id,
+          name: invitee.full_name,
+          email: invitee.email,
+          scheduled_slot: Timeslot.find_by(id: invitee.availabilities[0].timeslot_id).slot
+        }
+      }
     end
 
     render json: {
       event: event,
-      timeslots: event.timeslots,
-      availabilities: event_availabilities
+      invitees: invitees_collection
     }
   end
 
@@ -86,6 +91,7 @@ class Api::V1::EventsController < ApiController
       timeslot_to_fill = least_available(availabilities_by_timeslot)
       schedule_slot = schedule_availability(timeslot_to_fill)
       availabilities_remaining = destroy_overlap(availabilities_by_timeslot, timeslot_to_fill)
+
       availabilities_remaining.flatten.each do |remaining_timeslot|
         if remaining_timeslot[:status] != "scheduled"
           scheduling_needed = true

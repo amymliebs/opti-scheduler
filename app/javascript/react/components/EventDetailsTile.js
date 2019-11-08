@@ -17,16 +17,24 @@ const EventDetailsTile = (props) => {
   let formattedEventDate = formattedDate(props.eventDate)
   let formattedRsvpDate = formattedDate(props.rsvpDate)
 
+  let locationVisibility = "hidden"
+  let descriptionVisibility = "hidden"
+  if (props.location != undefined) {
+    locationVisibility = "visible"
+  }
+  if (props.description != undefined) {
+    descriptionVisibility = "visible"
+  }
+
   return(
     <div>
       <div className="event-details">
         <p className="primary-subheader centered"><b>Your Event Window Details</b></p>
         <div className="event-specifics">
-          <p className="sub-text"><b>Location:</b> {props.location}</p>
           <p className="date"><b>Event Date:</b> {formattedEventDate}</p>
-          <p className="event-description"><b>Description:</b> {props.eventDescription}</p>
           <p className="date"><b>RSVP by {formattedRsvpDate}</b></p>
-          <p id="rsvp-status"><b>Schedule status:</b> {props.rsvpStatus}</p>
+          <p className={`${locationVisibility} sub-text`}><b>Location:</b> {props.location}</p>
+          <p className={`${descriptionVisibility} event-description`}><b>Description:</b> {props.eventDescription}</p>
           <div className="space-below"></div>
         </div>
       </div>

@@ -39,8 +39,4 @@ describe ("EventDetailsTile", () => {
   it("should say the RSVP date of the event", () => {
     expect(wrapper.find('.date').at(1).text()).toBe("RSVP by 02-08-2019")
   })
-
-  it("should display the rsvp status of the event", () => {
-    expect(wrapper.find('#rsvp-status').text()).toBe("Schedule status: Schedule pending")
-  })
 })
