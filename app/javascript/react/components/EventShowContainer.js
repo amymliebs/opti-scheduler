@@ -121,7 +121,7 @@ const EventShowContainer = (props) => {
         <ScheduledTimeTile
           key={inviteeDetails.invitee.inviteeId}
           name={inviteeDetails.invitee.name}
-          email={inviteeDetails.email}
+          email={inviteeDetails.invitee.email}
           timeslot={inviteeDetails.invitee.scheduledSlot}
         />
       )

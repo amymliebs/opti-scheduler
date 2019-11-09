@@ -6,6 +6,8 @@ class Api::V1::EventsController < ApiController
   def show
     event = Event.find_by(access_code: params[:id])
 
+    invitees_collection = []
+
     invitees_collection = event.invitees.map do |invitee|
       if invitee.availabilities.length > 0
         { invitee: {
@@ -18,6 +20,12 @@ class Api::V1::EventsController < ApiController
       end
     end
 
+    event_availabilities = []
+    event.timeslots.each do |timeslot|
+      availability = timeslot.availabilities
+      event_availabilities << availability
+    end
+
     if invitees_collection.length == 1 && invitees_collection.first.nil?
       render json: {
         event: event
@@ -25,6 +33,8 @@ class Api::V1::EventsController < ApiController
     else
       render json: {
         event: event,
+        availabilities: event_availabilities,
+        timeslots: event.timeslots,
         invitees: invitees_collection
       }
     end
@@ -87,8 +97,6 @@ class Api::V1::EventsController < ApiController
 
   def create_schedule
     availabilities_by_timeslot = params[:available_times][:possibilities]
-    this_event = params[:event][:event_id]
-    event_times = params[:times][:slots]
 
     scheduling_needed = true
 
