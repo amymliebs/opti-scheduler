@@ -73,7 +73,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
       expect(Event.count).to eq(prev_count + 1)
 
-      expect(ActionMailer::Base.deliveries.size).to eq(3)
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
       last_email = ActionMailer::Base.deliveries.last
     end
 

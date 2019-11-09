@@ -104,15 +104,64 @@ const EventShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+  const handleTextSend = (action) => {
+    let payload = {
+      event: {
+        eventId: event.id
+      },
+      times: {
+        slots: timeslots
+      },
+      availableTimes: {
+        possibilities: availabilities
+      }
+    }
+
+    sendReminderText(payload)
+  }
+
+  const sendReminderText = (payload) => {
+    fetch(`/api/v1/events/${eventCode}/send_reminder`, {
+      method: "POST",
+      body: JSON.stringify(humps.decamelizeKeys(payload)),
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json"
+      }
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(persistedData => {
+      setShouldRedirect(false)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   if (shouldRedirect) {
     return <Redirect to="/events" />
   }
 
   let schedulingButton
-  if (timeslots != []) {
-    schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
+  let scheduleMade = false
+
+  availabilities.forEach((availability) => {
+    if (availability.length == 1) {
+      scheduleMade = true
+    }
+  })
+
+  if (scheduleMade) {
+    schedulingButton = <button onClick={handleTextSend} className="main-button">TEXT A REMINDER</button>
   } else {
-    schedulingButton = <button className="main-button">TEXT A REMINDER</button>
+    schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
   }
 
   let scheduledMeetings = invitees.map((inviteeDetails) => {

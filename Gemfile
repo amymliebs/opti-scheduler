@@ -57,4 +57,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'super_token'
 gem 'active_model_serializers'
 gem 'sendgrid-ruby'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'twilio-ruby'
+gem 'phonelib'
