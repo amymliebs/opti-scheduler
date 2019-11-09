@@ -11,6 +11,7 @@ const RSVPForm = (props) => {
     lastName: "",
     email: props.email,
     note: "",
+    phone: "",
     timeslots: selectedTimeslots
   }
 
@@ -21,6 +22,7 @@ const RSVPForm = (props) => {
     lastName: "",
     email: "",
     note: "",
+    phone: "",
     timeslots: selectedTimeslots
   })
   const[selectedTimeslots, setSelectedTimeslots] = useState([])
@@ -68,7 +70,8 @@ const RSVPForm = (props) => {
         firstName: newRSVP.firstName,
         lastName: newRSVP.lastName,
         email: newRSVP.email,
-        note: newRSVP.note
+        note: newRSVP.note,
+        phone: newRSVP.phone
       },
       availabilities: {
         timeslots: selectedTimeslots
@@ -187,7 +190,8 @@ const RSVPForm = (props) => {
                 type="text"
                 onChange={handleFieldChange}
                 value={newRSVP.phone}
-                placeholder="555-555-5555"                  className="centered"
+                placeholder="555-555-5555"
+                className="centered"
               />
           </div>
 

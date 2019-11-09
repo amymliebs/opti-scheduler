@@ -7,14 +7,17 @@ class Invitee < ApplicationRecord
   has_many :availabilities
   has_many :timeslots, through: :availabilities
 
-
   def full_name
     if !first_name.nil? && !last_name.nil?
       first_name + " " + last_name
     elsif first_name.nil?
       last_name
     else
-      first_name  
+      first_name
     end
+  end
+
+  def number
+    return "+1#{phone.split("-").join}"
   end
 end

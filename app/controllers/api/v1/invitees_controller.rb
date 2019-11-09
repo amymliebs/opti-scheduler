@@ -32,6 +32,6 @@ class Api::V1::InviteesController < ApiController
   end
 
   def invitee_params
-    params.require(:invitees).permit(:first_name, :last_name, :email, :note)
+    params.require(:invitees).permit(:first_name, :last_name, :email, :note, :phone)
   end
 end

@@ -118,6 +118,18 @@ class Api::V1::EventsController < ApiController
     }
   end
 
+  def send_reminder
+    event = Event.find_by(access_code: params[:id])
+
+    event.invitees.each do |invitee|
+      if invitee.availabilities.length > 0
+        message = "OptiScheduler Reminder: You are meeting with #{invitee.full_name} at #{Timeslot.find_by(id: invitee.availabilities[0].timeslot_id).slot} for #{event.event_name}"
+        cell_phone = invitee.number
+        TwilioClient.new.send_text(message, cell_phone)
+      end
+    end
+  end
+
   private
 
   def least_available(event_timeslots)
