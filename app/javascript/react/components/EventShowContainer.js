@@ -150,22 +150,26 @@ const EventShowContainer = (props) => {
   }
 
   let schedulingButton
-  let scheduleMade = false
+  let tableClass = "hidden"
+  let remaining_availabilities = false
 
   availabilities.forEach((availability) => {
-    if (availability.length == 1) {
-      scheduleMade = true
-    }
+    availability.forEach((slot) => {
+      if (slot.status == "available") {
+        remaining_availabilities = true
+      }
+    })
   })
 
-  if (scheduleMade) {
-    schedulingButton = <button onClick={handleTextSend} className="main-button">TEXT A REMINDER</button>
-  } else {
+  if (remaining_availabilities) {
     schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
+  } else {
+    tableClass = "visible"
+    schedulingButton = <button onClick={handleTextSend} className="main-button">TEXT A REMINDER</button>
   }
 
   let scheduledMeetings = invitees.map((inviteeDetails) => {
-    if (inviteeDetails.invitee.scheduledSlot) {
+    if (!remaining_availabilities) {
       return(
         <ScheduledTimeTile
           key={inviteeDetails.invitee.inviteeId}
@@ -212,7 +216,7 @@ const EventShowContainer = (props) => {
               <div className="gap">
               </div>
               <div className="centered row">
-              <table className="ui yellow collapsing celled table">
+              <table className={`ui yellow collapsing celled table ${tableClass}`}>
                 <thead>
                   <tr>
                     <th>Invitee</th>

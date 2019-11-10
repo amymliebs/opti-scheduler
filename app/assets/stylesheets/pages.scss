@@ -72,11 +72,11 @@
 }
 
 .container, .containerR, .containerL {
-  background: rgba(255, 235, 173, .7);
+  background-color: $medium-yellow;
   color: $dark-gray;
-  border: 2px solid $homepage-yellow;
+  // border: 2px solid $homepage-yellow;
   margin-left: 60px;
-  border-radius: 60px;
+  // border-radius: 60px;
   padding: 2em;
 }
 
