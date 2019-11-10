@@ -1,0 +1,31 @@
+<div class="body-text">
+  <h1 class="secondary-header">OptiScheduler</h1>
+  <br />
+  <div>
+    Hi <%= @invitee.first_name %>, <br /><br />
+    You have a meeting sheduled with <%= @user.first_name %> on <%= @event.event_date.strftime("%b. %d, %Y") %>.
+  </div>
+  <br />
+  <div>
+    <span>Your meeting time:&ensp;<%= @timeslot %></span>
+    <br />
+    <span>Event name:&ensp;<%= @event.event_name %></span>
+    <br />
+    <% if @event.location != "" %>
+      <span>Location:&ensp;<%= @event.location %></span>
+      <br />
+    <%- end -%>
+    <% if @event.event_description != "" %>
+      <span>Description:&ensp;<%= @event.event_description %></span>
+    <%- end -%>
+  </div>
+  <br />
+  <br />
+  <div>Please contact <%= @user.first_name %> <%= @user.last_name %> if for some reason this time no longer works well for you.
+  </div>
+  <br />
+  <br />
+  <span class="fine-print">
+    About OptiScheduler: OptiScheduler is a an optimization tool designed to make scheduling a one-on-one meeting easy. The host creates an event window, invitees reply with their availability within that window, and OptiScheduler creates a shcedule to meet everyone's needs. <%= link_to 'Get started hosting your own event!', "https://optischeduler.herokuapp.com/welcome" %>
+  </span>
+</div>

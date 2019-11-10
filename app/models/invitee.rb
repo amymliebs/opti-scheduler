@@ -1,6 +1,6 @@
 class Invitee < ApplicationRecord
   validates :email, presence: true
-  validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "Reformat phone number" }
+  # validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "Reformat phone number" }
   validates :invitee_code, uniqueness: true
   has_secure_token :invitee_code, length: 6
 
