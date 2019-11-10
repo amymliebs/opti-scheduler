@@ -2,7 +2,7 @@
     <h1 class="secondary-header">OptiScheduler</h1>
     <br />
     <div>
-      <%= @user["first_name"] %> <%= @user["last_name"] %> has invited you to reply to an event on OptiScheduler.
+      <%= @user.first_name %> <%= @user.last_name %> has invited you to reply to an event on OptiScheduler.
     </div>
     <br />
     <div>
@@ -17,7 +17,7 @@
     <br />
     <br />
     <div>
-      <span><b>Please RSVP by <%= @event.rsvp_date.strftime("%b. %d, %Y") %> with all times you are available to meet</b>. You will be notified via email of a time that works well for both you and <%= @user["first_name"] %>.</span>
+      <span><b>Please RSVP by <%= @event.rsvp_date.strftime("%b. %d, %Y") %> with all times you are available to meet</b>. You will be notified via email of a time that works well for both you and <%= @user.first_name %>.</span>
       <br/>
       <span> The sooner you RSVP, the more likely we are to find a time that work well for both of you!</span>
     </div>

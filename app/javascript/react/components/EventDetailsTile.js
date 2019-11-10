@@ -19,10 +19,10 @@ const EventDetailsTile = (props) => {
 
   let locationVisibility = "hidden"
   let descriptionVisibility = "hidden"
-  if (props.location != undefined) {
+  if (props.location != "") {
     locationVisibility = "visible"
   }
-  if (props.description != undefined) {
+  if (props.description != undefined ) {
     descriptionVisibility = "visible"
   }
 

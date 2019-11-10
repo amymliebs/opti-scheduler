@@ -24,19 +24,19 @@ describe ("EventDetailsTile", () => {
     )
   })
 
-  it("should say the description of the event", () => {
-    expect(wrapper.find('.event-description').text()).toBe("Description: Please sign up for a time to check in.")
-  })
-
-  it("should say the location of the event", () => {
-    expect(wrapper.find('.sub-text').text()).toBe("Location: Room 213")
-  })
-
-  it("should say the date of the event", () => {
+  it("should display the date of the event", () => {
     expect(wrapper.find('.date').at(0).text()).toBe("Event Date: 02-14-2019")
   })
 
-  it("should say the RSVP date of the event", () => {
+  it("should display the RSVP date of the event", () => {
     expect(wrapper.find('.date').at(1).text()).toBe("RSVP by 02-08-2019")
+  })
+
+  it("should display the location of the event", () => {
+    expect(wrapper.find('.sub-text').text()).toBe("Location: Room 213")
+  })
+
+  it("should display the description of the event", () => {
+    expect(wrapper.find('.event-description').text()).toBe("Description: Please sign up for a time to check in.")
   })
 })

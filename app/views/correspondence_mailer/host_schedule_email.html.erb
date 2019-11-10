@@ -3,14 +3,12 @@
   <br />
   <div>
     Hi <%= @user.first_name %>, <br /><br />
-    This email is to confirm that your OptiScheduler event window, '<%= @event.event_name %>', has been scheduled for <%= @event.event_date %>.
-
-    Invitations have been sent to <%= @invitees %>.
+    You schedule for '<%= @event.event_name %>' on <%= @event.event_date.strftime("%b. %d, %Y") %> is ready.
   </div>
   <br />
-  <span>On <%= @event.rsvp_date.strftime("%b. %d, %Y") %> your schedule will be created. You will receive an email the following day with your entire schedule for the event window and each participant will receive an email with only their assigned slot time.</span>
-
-  <span>To view or delete your event, visit <%= link_to 'your event page', @url %>.
+  <div>
+    <%= link_to 'Visit your event page', @url %> to view your schedule.
+  </div>
   <br />
   <br />
   <br />

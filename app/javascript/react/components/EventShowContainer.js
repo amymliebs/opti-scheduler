@@ -117,6 +117,8 @@ const EventShowContainer = (props) => {
       }
     }
 
+    schedulingButton = <div>A text message reminder has been sent to each invitee who provided a valid phone number.</div>
+
     sendReminderText(payload)
   }
 
@@ -162,14 +164,14 @@ const EventShowContainer = (props) => {
   })
 
   if (remaining_availabilities) {
-    schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE!</button>
+    schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE</button>
   } else {
     tableClass = "visible"
     schedulingButton = <button onClick={handleTextSend} className="main-button">TEXT A REMINDER</button>
   }
 
   let scheduledMeetings = invitees.map((inviteeDetails) => {
-    if (!remaining_availabilities) {
+    if (!remaining_availabilities && inviteeDetails) {
       return(
         <ScheduledTimeTile
           key={inviteeDetails.invitee.inviteeId}

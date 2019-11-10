@@ -15,13 +15,13 @@ describe ("EventNameTile", () => {
         <EventNameTile
           eventName="July 26th Check-In"
           rsvpStatus="schedule pending"
-          accessCode="32"
+          accessCode="3j4m32"
         />
       </BrowserRouter>
     )
   })
 
-  it("should say the name of each event", () => {
+  it("should display the name of each event", () => {
     expect(wrapper.find('.event-name').text()).toBe("July 26th Check-In")
   })
 
@@ -33,6 +33,6 @@ describe ("EventNameTile", () => {
     const link = wrapper.find('Link').first()
 
     expect(link).toBeDefined()
-    expect(link.props()["to"]).toBe("/events/32")
+    expect(link.props()["to"]).toBe("/events/3j4m32")
   })
 })

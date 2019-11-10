@@ -113,6 +113,20 @@ class Api::V1::EventsController < ApiController
       end
     end
 
+    event = Event.find_by(access_code: params[:id])
+    user = User.find(event.user_id)
+
+    binding.pry
+
+    CorrespondenceMailer.host_schedule_email(event, user).deliver_now
+
+    event.invitees.each do |invitee|
+      binding.pry
+      scheduled_time = Timeslot.find_by(id: invitee.availabilities[0].timeslot_id).slot
+      binding.pry
+      CorrespondenceMailer.invitee_schedule_email(event, user, invitee, scheduled_time).deliver_now
+    end
+
     render json: {
       events: Event.all
     }
