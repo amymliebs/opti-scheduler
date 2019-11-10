@@ -8,7 +8,7 @@ Hosts have the option to send a text message to an invitee who chose to provide 
 
 
 ## View the Application
-See the application running on Heroku at http://optischeduler.herokuapp.com/
+See the application running on Heroku at http://optischeduler.herokuapp.com/ 
 Note, the Twilio API only texts numbers verified with Twilio.
 
 
@@ -18,9 +18,9 @@ Note, the Twilio API only texts numbers verified with Twilio.
 * Rails 5.2.3
 * React 16.8.0
 * Semantic UI
-* Action Mailer with SendGrid
 * Devise
-* Twilio-Ruby
+* Action Mailer with SendGrid
+* Twilio
 * React-Datepicker 2.9.6
 
 
