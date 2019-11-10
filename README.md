@@ -8,7 +8,8 @@ Hosts have the option to send a text message to an invitee who chose to provide 
 
 
 ## View the Application
-See the application running on Heroku at http://optischeduler.herokuapp.com/ &ensp; Note, the Twilio API only texts numbers verified with Twilio.
+See the application running on Heroku at http://optischeduler.herokuapp.com/ <br />
+Note, the Twilio API only texts numbers verified with Twilio.
 
 
 ## Technologies
