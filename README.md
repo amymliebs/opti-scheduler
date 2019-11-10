@@ -8,8 +8,7 @@ Hosts have the option to send a text message to an invitee who chose to provide 
 
 
 ## View the Application
-See the application running on Heroku at http://optischeduler.herokuapp.com/ 
-Note, the Twilio API only texts numbers verified with Twilio.
+See the application running on Heroku at http://optischeduler.herokuapp.com/ &ensp; Note, the Twilio API only texts numbers verified with Twilio.
 
 
 ## Technologies
@@ -39,7 +38,6 @@ See the file `.env.example` for required variables that must be set up to run th
 Run the application locally by starting a rails server and a yarn server in separate windows in your terminal:
 ```
 yarn run start
-
 rails server
 ```
 
@@ -48,6 +46,5 @@ In your browser, navigate to `localhost:3000` to view the application.
 Test suites can be run in separate windows in your terminal:
 ```
 yarn test
-
 bundle exec rspec
 ```
