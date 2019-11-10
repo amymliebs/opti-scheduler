@@ -1,44 +1,41 @@
 @import './colors';
 
-#site-title {
-  font-size: 20px
+body {
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
-hr {
-  border: 0;
-  height: 2px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, .1), rgba(255, 255, 255, 1), rgba(0, 0, 0, .1));
+.underline {
+  text-decoration: underline;
 }
 
 .primary-header {
   text-align: center;
   font-size: 40px;
+  color: black;
+  padding-top: 80px;
+  padding-bottom: 20px
+}
+
+.primary-subheader {
   color: $dark-gray;
-  padding-top: 40px;
+  font-size: 26px;
+  text-align: center;
+  margin-top: -25px;
 }
 
 .secondary-header {
   text-align: center;
   font-size: 34px;
-  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: 500;
   line-height: normal;
   color: $dark-gray;
 }
 
-.primary-subheader {
-  color: $dark-gray;
-  font-size: 32px
-}
-
 .secondary-subheader {
+  color: $dark-gray;
+  font-size: 26px;
   text-align: center;
-  font-size: 35px;
-  margin-bottom: 40px
-}
-
-.body-text {
-  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  margin-bottom: 10px
 }
 
 .centered {

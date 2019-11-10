@@ -1,11 +1,5 @@
 @import './colors';
 
-.yellow-strip {
-  background-color: $homepage-yellow;
-  height: 1.7em;
-  width: 100%
-}
-
 #flash-message {
   padding: 10px;
   background-color: $light-gray;
@@ -23,18 +17,32 @@
   margin-bottom: 30px
 }
 
-.underline {
-  text-decoration: underline;
+.yellow-strip {
+  background-color: $homepage-yellow;
+  height: 1.7em;
+  width: 100%
 }
 
-.fading-background {
-  background: image-url('open-planner.jpg');
-  min-width: 100%;
-  min-height: 96vh;
-  background-repeat: no-repeat;
+.main-background {
+  background-color: #f5f5f5;
+  height: 100vh;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: top;
+}
+
+#nav-bar {
+  background-color: black
+}
+
+#site-title {
+  font-size: 19px
+}
+
+.item {
+  font-size: 16px;
+}
+
+.bottom-margin {
+  height: 60px;
 }
 
 .spacer {
@@ -49,10 +57,6 @@
 
 .space-it {
   margin-top: 20px;
-}
-
-.space-below {
-  height: 4em;
 }
 
 .spaced-gap {
