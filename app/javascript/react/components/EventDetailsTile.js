@@ -29,7 +29,7 @@ const EventDetailsTile = (props) => {
   return(
     <div>
       <div className="event-details">
-        <p className="primary-subheader centered"><b>Your Event Window Details</b></p>
+        <p className="secondary-subheader"><b>Your Event Window Details</b></p>
         <div className="event-specifics">
           <p className="date"><b>Event Date:</b> {formattedEventDate}</p>
           <p className="date"><b>RSVP by {formattedRsvpDate}</b></p>

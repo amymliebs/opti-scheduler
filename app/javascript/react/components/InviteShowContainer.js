@@ -32,7 +32,7 @@ const InviteShowContainer = (props) => {
   },[])
 
   return(
-    <div className="ui stackable grid fading-background">
+    <div className="ui stackable grid main-background">
       <div className="sixteen wide column">
         <h1 className="primary-header">{event.eventName}</h1>
       </div>

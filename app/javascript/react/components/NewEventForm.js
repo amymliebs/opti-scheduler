@@ -158,9 +158,9 @@ const NewEventForm = (props) => {
   })
 
   return(
-    <div className="fading-background">
+    <div className="main-background">
       <h2 className="primary-header">New Event Window Form </h2>
-      <div className="space-below">
+      <div className="event-bumper">
       </div>
       <div className="container new-form">
       <div className="ui large form">
@@ -266,7 +266,7 @@ const NewEventForm = (props) => {
             <div className="ui stackable grid">
               {times}
             </div>
-          <div className="space-below"></div>
+          <div className="spaced-gap"></div>
           <div className="centered">
             <form onSubmit={handleEventSubmit}>
               <input

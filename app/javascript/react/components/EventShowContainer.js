@@ -184,12 +184,13 @@ const EventShowContainer = (props) => {
   })
 
   return(
-    <div className="fading-background">
+    <div className="main-background">
       <div className="ui stackable grid">
         <div className="sixteen wide column">
           <h1 className="primary-header">{event.eventName}</h1>
         </div>
-        <div className="gap"></div>
+        <div className="event-bumper">
+        </div>
 
         <div className="seven wide column container">
           <EventDetailsTile
@@ -202,15 +203,13 @@ const EventShowContainer = (props) => {
         </div>
         <div className="seven wide column container">
           <div className="complete-schedule">
-            <div className="primary-subheader centered"><b>
+            <div className="secondary-subheader"><b>
               Complete Schedule</b>
             </div>
             <div className="schedule-pending centered">
               Your schedule will appear here once it has been set.
             </div>
             <div className="">
-            <div className="gap">
-            </div>
             <div className="ui two column centered grid">
               <div>
                 {schedulingButton}

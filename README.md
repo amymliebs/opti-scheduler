@@ -19,9 +19,13 @@ Note, the Twilio API only texts numbers verified with Twilio.
 * React 16.8.0
 * Semantic UI
 * Devise
-* Action Mailer with SendGrid
+* Action Mailer
+* SendGrid
 * Twilio
 * React-Datepicker 2.9.6
+* Factory Bot
+* Faker
+* Super Token
 
 
 ## Running Locally

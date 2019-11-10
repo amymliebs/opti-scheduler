@@ -15,25 +15,33 @@
   border-radius: 10px;
   width: auto;
   height: 400px;
-  margin-left: 80px;
-  margin-top: 70px;
+  margin-left: 60px;
+  margin-top: 100px;
 }
 
 .user-question {
-  margin-top: 10em;
+  margin-top: 9.8em;
   text-align: right;
-  margin-right: 31%;
-  font-size: 15px;
+  margin-right: 32%;
+  font-size: 16px;
 
   a {
     color: white;
   }
 }
 
-.first-box {
-  margin-top:40%
+#how-to-one {
+  margin-left: 80px
 }
 
-.box {
+.first-box-text {
+  margin-top: 40%
+}
+
+.box-text {
   margin-top: 33%
+}
+
+.last-box {
+  margin-right: 30px
 }

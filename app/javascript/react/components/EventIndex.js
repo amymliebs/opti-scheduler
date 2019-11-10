@@ -44,16 +44,16 @@ const EventIndex = (props) => {
   })
 
   return (
-    <div className="index-page">
-      <div className="filter">
+    <div className="main-background">
       <h3 className="primary-header">My Event Windows</h3>
-      <h4 className="secondary-subheader">Select the name of an event to view its details</h4>
-      <div className="to-align">
+      <h4 className="primary-subheader">Select the name of an event to view its details</h4>
+      <div className="event-bumper">
       </div>
 
       <div className="ui stackable grid centered">
         {eventTiles}
       </div>
+      <div className="bottom-margin">
       </div>
     </div>
   )

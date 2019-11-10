@@ -1,7 +1,15 @@
 @import './colors';
 
+.event-bumper {
+  width: 800px;
+  height: 2px;
+  margin:0 auto;
+  border-top: 1px solid $homepage-yellow;
+  padding-top: 50px
+}
+
 .event-details {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 90%;
   margin-left: 60px;
 }
@@ -19,7 +27,7 @@
 }
 
 .schedule-pending {
-  margin-top: 80px;
+  margin-top: 60px;
   font-size: 20px;
 }
 
@@ -33,15 +41,6 @@
 
 .right-column {
   margin-left: 50px;
-}
-
-.index-page {
-  background: image-url('desk.jpg');
-  min-width: 100%;
-  min-height: 86vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 }
 
 .index-tile {
@@ -72,16 +71,17 @@
 }
 
 .container, .containerR, .containerL {
-  background-color: $medium-yellow;
+  background-color: #fff7db;
   color: $dark-gray;
-  // border: 2px solid $homepage-yellow;
+  border: 4px solid $homepage-yellow;
   margin-left: 60px;
-  // border-radius: 60px;
+  border-radius: 10px;
   padding: 2em;
 }
 
 .containerR {
   margin-left: 10%;
+  padding-top: 60px;
   width: 90%
 }
 
