@@ -163,55 +163,54 @@ const NewEventForm = (props) => {
       <div className="event-bumper">
       </div>
       <div className="container new-form">
-      <div className="ui large form">
-        <ErrorList errors={errors} />
-        <div className="left-column">
+        <div className="ui large form">
+          <ErrorList errors={errors} />
+          <div className="left-column">
 
+            <div className="inline required field">
+              <label>Event Window Name</label>
+              <input
+                type="text"
+                name="eventName"
+                value={newEvent.eventName}
+                onChange={handleFieldChange}
+                placeholder="Event Window Name"
+              />
+            </div>
 
-          <div className="inline required field">
-            <label>Event Window Name</label>
-            <input
-              type="text"
-              name="eventName"
-              value={newEvent.eventName}
-              onChange={handleFieldChange}
-              placeholder="Event Window Name"
-            />
-          </div>
-
-          <div className="mini-space">
-          </div>
-          <div className="inline field">
-            <label>Location</label>
-            <input
-              type="text"
-              name="location"
-              value={newEvent.location}
-              onChange={handleFieldChange}
-              placeholder="Location"
-            />
-          </div>
-
-          <div className="mini-space">
-          </div>
-          <div className="field">
-            <label>Event Window Description</label>
-            <textarea
-              className="textarea-box"
-              name="eventDescription"
-              rows="3"
-              onChange={handleFieldChange}
-              value={newEvent.eventDescription}
-              placeholder="Write a description to give your guests context for the event. This description will be visible to every person you invite to schedule an event during this window."
-              >
-            </textarea>
-          </div>
-
-          <div className="two fields">
             <div className="mini-space">
             </div>
-            <div className="required field">
-              <label>Event Window Date</label>
+            <div className="inline field">
+              <label>Location</label>
+              <input
+                type="text"
+                name="location"
+                value={newEvent.location}
+                onChange={handleFieldChange}
+                placeholder="Location"
+              />
+            </div>
+
+            <div className="mini-space">
+            </div>
+            <div className="field">
+              <label>Event Window Description</label>
+              <textarea
+                className="textarea-box"
+                name="eventDescription"
+                rows="3"
+                onChange={handleFieldChange}
+                value={newEvent.eventDescription}
+                placeholder="Write a description to give your guests context for the event. This description will be visible to every person you invite to schedule an event during this window."
+              >
+              </textarea>
+            </div>
+
+            <div className="two fields">
+              <div className="mini-space">
+              </div>
+              <div className="required field">
+                <label>Event Window Date</label>
                 <DatePicker
                   className="centered"
                   name="eventDate"
@@ -220,10 +219,10 @@ const NewEventForm = (props) => {
                   placeholderText="mm-dd-yyyy"
                   minDate={new Date()}
                 />
-            </div>
+              </div>
 
-            <div className="required field">
-              <label>RSVP by Date</label>
+              <div className="required field">
+                <label>RSVP by Date</label>
                 <DatePicker
                   className="centered"
                   name="rsvpDate"
@@ -233,57 +232,57 @@ const NewEventForm = (props) => {
                   maxDate={eventDate}
                   minDate={new Date()}
                 />
+              </div>
             </div>
-          </div>
 
-          <div className="mini-space">
-          </div>
-          <div className="required field">
-            <label>Invitees</label>
-            <span className="sub-label">List the email addresses of your guests, separated by commas.</span>
-            <div className="space-it">
+            <div className="mini-space">
             </div>
-            <textarea
-              className="textarea-box"
-              name="invitees"
-              onChange={handleFieldChange}
-              value={newEvent.invitees}
-              placeholder="jchristianson@email.com, arobinson@email.com, wduerte@gmail.com"
+            <div className="required field">
+              <label>Invitees</label>
+              <span className="sub-label">List the email addresses of your guests, separated by commas.</span>
+              <div className="space-it">
+              </div>
+              <textarea
+                className="textarea-box"
+                name="invitees"
+                onChange={handleFieldChange}
+                value={newEvent.invitees}
+                placeholder="jchristianson@email.com, arobinson@email.com, wduerte@gmail.com"
               >
-            </textarea>
-          </div>
-        </div>
-
-        <div className="to-align">
-        </div>
-        <div className="right-column">
-          <label className="timeslots-label">Available Times:&ensp;Select the times you are available to meet. These times set the window available for your invitees. </label>
-
-          <div className="spaced-gap">
-          </div>
-
-          <div className="times column">
-            <div className="ui stackable grid">
-              {times}
+              </textarea>
             </div>
-          <div className="spaced-gap"></div>
-          <div className="centered">
-            <form onSubmit={handleEventSubmit}>
-              <input
-                className="form-button"
-                type="submit"
-                value="Send Invitations!"
-              />
-            </form>
           </div>
+
+          <div className="to-align">
+          </div>
+          <div className="right-column">
+            <label className="timeslots-label">Available Times:&ensp;Select the times you are available to meet. These times set the window available for your invitees. </label>
+
+            <div className="spaced-gap">
+            </div>
+
+            <div className="times column">
+              <div className="ui stackable grid">
+                {times}
+              </div>
+              <div className="spaced-gap"></div>
+              <div className="centered">
+                <form onSubmit={handleEventSubmit}>
+                  <input
+                    className="form-button"
+                    type="submit"
+                    value="Send Invitations!"
+                  />
+                </form>
+              </div>
+            </div>
           </div>
         </div>
+        <div className="gap">
+        </div>
       </div>
-      <div className="gap">
-      </div>
+    <div className="spacer">
     </div>
-      <div className="spacer">
-      </div>
     </div>
   )
 }

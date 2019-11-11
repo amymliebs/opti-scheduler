@@ -154,8 +154,12 @@ const EventShowContainer = (props) => {
   let schedulingButton
   let tableClass = "hidden"
   let remaining_availabilities = false
+  let no_rsvps = true
 
   availabilities.forEach((availability) => {
+    if (availability.length != 0) {
+      no_rsvps = false
+    }
     availability.forEach((slot) => {
       if (slot.status == "available") {
         remaining_availabilities = true
@@ -163,7 +167,9 @@ const EventShowContainer = (props) => {
     })
   })
 
-  if (remaining_availabilities) {
+  if (no_rsvps) {
+    schedulingButton = <div id="awaiting-rsvps">Awaiting RSVPs</div>
+  } else if (remaining_availabilities) {
     schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE</button>
   } else {
     tableClass = "visible"
@@ -203,13 +209,12 @@ const EventShowContainer = (props) => {
         </div>
         <div className="seven wide column container">
           <div className="complete-schedule">
-            <div className="secondary-subheader"><b>
-              Complete Schedule</b>
+            <div className="secondary-subheader">
+              <b>Complete Schedule</b>
             </div>
             <div className="schedule-pending centered">
               Your schedule will appear here once it has been set.
             </div>
-            <div className="">
             <div className="ui two column centered grid">
               <div>
                 {schedulingButton}
@@ -217,20 +222,19 @@ const EventShowContainer = (props) => {
               <div className="gap">
               </div>
               <div className="centered row">
-              <table className={`ui yellow collapsing celled table ${tableClass}`}>
-                <thead>
-                  <tr>
-                    <th>Invitee</th>
-                    <th>Email Address</th>
-                    <th>Meeting Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {scheduledMeetings}
-                </tbody>
-              </table>
-            </div>
-            </div>
+                <table className={`ui yellow collapsing celled table ${tableClass}`}>
+                  <thead>
+                    <tr>
+                      <th>Invitee</th>
+                      <th>Email Address</th>
+                      <th>Meeting Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {scheduledMeetings}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
