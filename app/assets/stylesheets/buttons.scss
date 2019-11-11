@@ -25,32 +25,30 @@
 
 .attention-button:hover, .big-sign-up:hover {
   background-color: $hover-blue;
-  color: #F4F0E4;
+  color: $eggshell
 }
 
 .login-button input {
   background-color: $homepage-yellow;
-  border-radius: 10px;
-  height: 2.5em;
-  width: auto;
-  padding: 10px 30px;
   margin-bottom: 30px;
   margin-top: 20px;
 }
 
 .login-button input:hover {
-  background-color: #ebb838;
+  background-color: $homepage-yellow;
   color: white;
 }
 
 .form-button, .main-button {
   margin-left: 30px;
+  font-weight: 700;
+}
+
+.form-button, .main-button, .login-button input {
   border-radius: 10px;
   height: 2.5em;
   width: auto;
   padding: 10px 30px;
-  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  font-weight: 700;
 }
 
 .form-button {

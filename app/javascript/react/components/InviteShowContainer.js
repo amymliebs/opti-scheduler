@@ -36,33 +36,34 @@ const InviteShowContainer = (props) => {
       <div className="sixteen wide column">
         <h1 className="primary-header">{event.eventName}</h1>
       </div>
+      <div className="event-bumper">
+      </div>
       <div className="containerL">
-      <div className="eight wide column">
-        <div>
-        <EventDetailsTile
-          eventDescription={event.eventDescription}
-          location={event.location}
-          eventDate={event.eventDate}
-          rsvpDate={event.rsvpDate}
-          rsvpStatus={event.rsvpStatus}
-        />
-      </div>
-      </div>
+        <div className="eight wide column">
+          <div>
+            <EventDetailsTile
+              eventDescription={event.eventDescription}
+              location={event.location}
+              eventDate={event.eventDate}
+              rsvpDate={event.rsvpDate}
+              rsvpStatus={event.rsvpStatus}
+            />
+          </div>
+        </div>
       </div>
 
       <div className="eight wide column float right">
         <div className="containerR">
-        <RSVPForm
-          email={invitee.email}
-          inviteeCode={inviteeCode}
-          eventCode={eventCode}
-          timeslots={timeslots}
-        />
+          <RSVPForm
+            email={invitee.email}
+            inviteeCode={inviteeCode}
+            eventCode={eventCode}
+            timeslots={timeslots}
+          />
+        </div>
       </div>
-    </div>
-    <div className="spacer">
-    </div>
-
+      <div className="spacer">
+      </div>
     </div>
   )
 }

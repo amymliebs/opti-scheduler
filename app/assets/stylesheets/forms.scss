@@ -17,7 +17,7 @@
 }
 
 input, textarea {
-  background-color: #faf4e3;
+  background-color: $eggshell;
   width: 60%;
   height: 2em;
 }
@@ -78,4 +78,8 @@ label {
 
 .limited-box {
   width: 90%
+}
+
+.sub-label-cell {
+  padding-right: 30px
 }

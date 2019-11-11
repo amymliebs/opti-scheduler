@@ -25,8 +25,8 @@
 
 .main-background {
   background-color: #f5f5f5;
-  height: 100vh;
-  background-size: cover;
+  min-height: 100vh;
+  height: auto;
 }
 
 #nav-bar {

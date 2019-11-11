@@ -142,17 +142,16 @@ const RSVPForm = (props) => {
 
       <div className="ui large form">
         <ErrorList errors={errors} />
-
         <div className="rsvp-form">
 
           <div className="inline required field">
             <label>First Name</label>
-              <input
-                name="firstName"
-                type="text"
-                onChange={handleFieldChange}
-                value={newRSVP.firstName}
-              />
+            <input
+              name="firstName"
+              type="text"
+              onChange={handleFieldChange}
+              value={newRSVP.firstName}
+            />
           </div>
 
           <div className="mini-space">
@@ -171,26 +170,29 @@ const RSVPForm = (props) => {
           </div>
           <div className="inline required field">
             <label>Email</label>
-              <input
-                name="email"
-                type="text"
-                onChange={handleFieldChange}
-                value={newRSVP.email}
-              />
+            <input
+              name="email"
+              type="text"
+              onChange={handleFieldChange}
+              value={newRSVP.email}
+            />
           </div>
 
           <div className="mini-space">
           </div>
           <div className="inline field">
             <label>Cell phone number</label>
-              <input
-                name="phone"
-                type="text"
-                onChange={handleFieldChange}
-                value={newRSVP.phone}
-                placeholder="555-555-5555"
-                className="centered"
-              />
+            <div className="sub-label-cell">Optionally, leave your phone number so that the host can text you a reminder of your time once schedule</div>
+            <div className="space-it">
+            </div>
+            <input
+              name="phone"
+              type="text"
+              onChange={handleFieldChange}
+              value={newRSVP.phone}
+              placeholder="555-555-5555"
+              className="centered"
+            />
           </div>
 
           <div className="mini-space">
@@ -206,14 +208,14 @@ const RSVPForm = (props) => {
           </div>
           <div className="field limited-box">
             <label> Note for host: (optional)</label>
-              <textarea
-                className="textarea-box"
-                name="note"
-                rows="4"
-                onChange={handleFieldChange}
-                value={newRSVP.note}
-                placeholder="(Optional)  Write a note to the host"
-              >
+            <textarea
+              className="textarea-box"
+              name="note"
+              rows="4"
+              onChange={handleFieldChange}
+              value={newRSVP.note}
+              placeholder="(Optional)  Write a note to the host"
+            >
             </textarea>
 
           </div>
