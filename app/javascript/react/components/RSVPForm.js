@@ -182,6 +182,9 @@ const RSVPForm = (props) => {
           </div>
           <div className="inline field">
             <label>Cell phone number</label>
+            <div className="sub-label-cell">Optionally, leave your phone number so that the host can text you a reminder of your time once schedule</div>
+            <div className="space-it">
+            </div>
             <input
               name="phone"
               type="text"
