@@ -3,7 +3,7 @@
   <br />
   <div>
     Hi <%= @user.first_name %>, <br /><br />
-    This email is to confirm that your OptiScheduler event window, '<%= @event.event_name %>', has been scheduled for <%= @event.event_date %>.
+    This email is to confirm that your OptiScheduler event window, '<%= @event.event_name %>', has been scheduled for <%= @event.event_date.strftime("%b. %d, %Y") %>.
 
     Invitations have been sent to <%= @invitees %>.
   </div>
@@ -16,6 +16,6 @@
   <br />
   <br />
   <span class="fine-print">
-    About OptiScheduler: OptiScheduler is a an optimization tool designed to make scheduling a one-on-one meeting easy. The host creates an event window, invitees reply with their availability within that window, and OptiScheduler creates a shcedule to meet everyone's needs. <%= link_to 'Get started hosting your own event!', "https://optischeduler.herokuapp.com/welcome" %>
+    About OptiScheduler: OptiScheduler is an optimization tool designed to make scheduling a one-on-one meeting easy. The host creates an event window, invitees reply with their availability within that window, and OptiScheduler creates a shcedule to meet everyone's needs. <%= link_to 'Get started hosting your own event!', "https://optischeduler.herokuapp.com" %>
   </span>
 </div>

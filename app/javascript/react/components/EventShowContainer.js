@@ -63,6 +63,10 @@ const EventShowContainer = (props) => {
     deleteEvent(eventCode)
   }
 
+  const refreshPage = () => {
+    window.location.reload(false);
+  }
+
   const handleScheduleCreation = (action) => {
     let payload = {
       event: {
@@ -77,6 +81,7 @@ const EventShowContainer = (props) => {
     }
 
     createSchedule(payload)
+    refreshPage()
   }
 
   const createSchedule = (payload) => {
