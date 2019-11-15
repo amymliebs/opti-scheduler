@@ -116,6 +116,7 @@ class Api::V1::EventsController < ApiController
     event = Event.find_by(access_code: params[:id])
     user = User.find(event.user_id)
 
+    event.update(rsvp_status: "Scheduled")
 
     CorrespondenceMailer.host_schedule_email(event, user).deliver_now
 
