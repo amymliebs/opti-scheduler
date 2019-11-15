@@ -50,19 +50,20 @@
   width: auto;
   height: auto;
   margin: 20px 15px;
-  filter: drop-shadow(0 0 0.75rem $light-gray)
+  filter: drop-shadow(0 0 0.75rem $light-gray);
 }
 
 .event-name {
   color: $dark-gray;
   font-size: 20px;
+  line-height: 150%;
   margin: 10px;
   text-align: center;
   font-weight: bold
 }
 
 .event-name:hover {
-  color: $homepage-yellow
+  color: $button-blue
 }
 
 .rsvp-status {
