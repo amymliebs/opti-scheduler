@@ -59,10 +59,17 @@ body {
   margin-top: 160px
 }
 
+.no-events {
+  font-size: 20px;
+  color: $button-blue;
+  line-height: 300%
+}
+
 .visible {
   visibility: visible;
 }
 
 .hidden {
   visibility: collapse;
+  display: none
 }

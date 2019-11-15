@@ -31,6 +31,11 @@ const EventIndex = (props) => {
     loaderStatus = "disabled"
   }
 
+  let noEventsMessage = "visible"
+  if (events.length > 0) {
+    noEventsMessage = "hidden"
+  }
+
   const eventTiles = events.map((event) => {
     return(
       <EventNameTile
@@ -48,6 +53,10 @@ const EventIndex = (props) => {
       <h3 className="primary-header">My Event Windows</h3>
       <h4 className="primary-subheader">Select the name of an event to view its details</h4>
       <div className="event-bumper">
+      </div>
+
+      <div className={`${noEventsMessage} centered no-events`}>
+        You don't have any events yet. <br /> Select <b>Create an Event Window</b> in the navigation bar to get started!
       </div>
 
       <div className="ui stackable grid centered">
