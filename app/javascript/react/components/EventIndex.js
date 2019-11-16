@@ -25,12 +25,6 @@ const EventIndex = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-
-  let loaderStatus = "active"
-  if (events == []) {
-    loaderStatus = "disabled"
-  }
-
   let noEventsMessage = "visible"
   if (events.length > 0) {
     noEventsMessage = "hidden"
