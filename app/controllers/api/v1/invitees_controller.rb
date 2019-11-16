@@ -27,6 +27,9 @@ class Api::V1::InviteesController < ApiController
     rsvp_times = params[:availabilities][:timeslots]
 
     if !rsvp.availabilities[0] || rsvp.availabilities[0].status != "scheduled"
+      if rsvp.availabilities
+        rsvp.availabilities.destroy_all
+      end
       if rsvp.update!(invitee_params)
         rsvp_times.each do |rsvp_time|
           host_time_entries.each do |entry|
