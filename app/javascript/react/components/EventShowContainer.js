@@ -31,7 +31,6 @@ const EventShowContainer = (props) => {
       if (thisEvent.timeslots) {
         setTimeslots(thisEvent.timeslots)
         setAvailabilities(thisEvent.availabilities)
-        debugger
         setInvitees(thisEvent.invitees)
       }
     })
