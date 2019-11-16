@@ -7,6 +7,7 @@ const InviteShowContainer = (props) => {
   const[invitee, setInvitee] = useState({})
   const[event, setEvent] = useState({})
   const[timeslots, setTimeslots] = useState([])
+  const[isScheduled, setIsScheduled] = useState(false)
   let eventCode = props.match.params.eventCode
   let inviteeCode = props.match.params.inviteeCode
 
@@ -27,9 +28,19 @@ const InviteShowContainer = (props) => {
       setInvitee(camelizedBody.invitee)
       setEvent(camelizedBody.event)
       setTimeslots(camelizedBody.timeslots)
+      setIsScheduled(camelizedBody.scheduled)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
+
+  let rsvpClass = "hidden"
+  let scheduledMemoClass = "hidden"
+
+  if (isScheduled) {
+    scheduledMemoClass = "visible"
+  } else {
+    rsvpClass = "visible"
+  }
 
   return(
     <div className="ui stackable grid main-background">
@@ -54,12 +65,17 @@ const InviteShowContainer = (props) => {
 
       <div className="eight wide column float right">
         <div className="containerR">
-          <RSVPForm
-            email={invitee.email}
-            inviteeCode={inviteeCode}
-            eventCode={eventCode}
-            timeslots={timeslots}
-          />
+          <div className={`${scheduledMemoClass} centered no-events`}>
+            This event has already been scheduled and is no longer accepting RSVPs.
+          </div>
+          <div className={`${rsvpClass}`}>
+            <RSVPForm
+              email={invitee.email}
+              inviteeCode={inviteeCode}
+              eventCode={eventCode}
+              timeslots={timeslots}
+            />
+          </div>
         </div>
       </div>
       <div className="spacer">
