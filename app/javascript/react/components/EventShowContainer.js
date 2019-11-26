@@ -187,8 +187,10 @@ const EventShowContainer = (props) => {
   let scheduledMeetings = invitees.map((inviteeDetails) => {
     if (!remaining_availabilities && inviteeDetails) {
       if (inviteeDetails.inviteeEmail) {
-        unscheduledInvitees.push(inviteeDetails.inviteeEmail)
-        unscheduledClass = "visible"
+        if (!no_rsvps) {
+          unscheduledInvitees.push(inviteeDetails.inviteeEmail)
+          unscheduledClass = "visible"
+        }
       } else {
         return(
           <ScheduledTimeTile
@@ -202,8 +204,13 @@ const EventShowContainer = (props) => {
     }
   })
 
+  let listedUnscheduled
   let unscheduledList = unscheduledInvitees.join(', ')
-  let unscheduledNotice = <div className={`${unscheduledClass} blue-alert-small`}> Unable to schedule the following invitees:&ensp; {unscheduledList} </div>
+  if (unscheduledInvitees.length > 1) {
+    const last = unscheduledInvitees.pop()
+    listedUnscheduled = unscheduledInvitees.join(', ') + ' and ' + last
+  }
+  let unscheduledNotice = <div className={`${unscheduledClass} blue-alert-small`}> Unable to schedule the following invitees:&ensp; {listedUnscheduled} </div>
 
   return(
     <div className="main-background">
