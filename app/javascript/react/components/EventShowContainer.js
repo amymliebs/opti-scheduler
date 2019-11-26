@@ -182,24 +182,28 @@ const EventShowContainer = (props) => {
   }
 
   let unscheduledClass = "hidden"
-  let unscheduledInvitees = "Unable to schedule "
+  let unscheduledInvitees = []
 
   let scheduledMeetings = invitees.map((inviteeDetails) => {
     if (!remaining_availabilities && inviteeDetails) {
-      if (!inviteeDetails.invitee.scheduledSlot) {
-        unscheduledInvitees += inviteeDetails.invitee.name
+      if (inviteeDetails.inviteeEmail) {
+        unscheduledInvitees.push(inviteeDetails.inviteeEmail)
         unscheduledClass = "visible"
+      } else {
+        return(
+          <ScheduledTimeTile
+            key={inviteeDetails.invitee.inviteeId}
+            name={inviteeDetails.invitee.name}
+            email={inviteeDetails.invitee.email}
+            timeslot={inviteeDetails.invitee.scheduledSlot}
+          />
+        )
       }
-      return(
-        <ScheduledTimeTile
-          key={inviteeDetails.invitee.inviteeId}
-          name={inviteeDetails.invitee.name}
-          email={inviteeDetails.invitee.email}
-          timeslot={inviteeDetails.invitee.scheduledSlot}
-        />
-      )
     }
   })
+
+  let unscheduledList = unscheduledInvitees.join(', ')
+  let unscheduledNotice = <div className={`${unscheduledClass} blue-alert-small`}> Unable to schedule the following invitees:&ensp; {unscheduledList} </div>
 
   return(
     <div className="main-background">
@@ -247,9 +251,7 @@ const EventShowContainer = (props) => {
                   </tbody>
                 </table>
               </div>
-              <div className={`${unscheduledClass} blue-alert`}>
-                {unscheduledInvitees}
-              </div>
+              {unscheduledNotice}
             </div>
           </div>
         </div>

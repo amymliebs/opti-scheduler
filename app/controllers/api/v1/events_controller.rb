@@ -16,6 +16,8 @@ class Api::V1::EventsController < ApiController
             email: invitee.email,
             scheduled_slot: Timeslot.find_by(id: invitee.availabilities[0].timeslot_id).slot
           }
+        } else {
+          invitee_email: invitee.email
         }
       end
     end

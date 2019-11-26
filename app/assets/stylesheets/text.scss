@@ -59,10 +59,17 @@ body {
   margin-top: 160px
 }
 
-.blue-alert {
+.blue-alert-large {
   font-size: 20px;
   color: $button-blue;
   line-height: 300%
+}
+
+.blue-alert-small {
+  margin-top: 20px;
+  font-size: 16px;
+  color: $button-blue;
+  line-height: 150%
 }
 
 .visible {

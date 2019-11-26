@@ -49,7 +49,7 @@ const EventIndex = (props) => {
       <div className="event-bumper">
       </div>
 
-      <div className={`${noEventsMessage} centered blue-alert`}>
+      <div className={`${noEventsMessage} centered blue-alert-large`}>
         You don't have any events yet. <br /> Select <b>Create an Event Window</b> in the navigation bar to get started!
       </div>
 
