@@ -65,7 +65,7 @@ const InviteShowContainer = (props) => {
 
       <div className="eight wide column float right">
         <div className="containerR">
-          <div className={`${scheduledMemoClass} centered no-events`}>
+          <div className={`${scheduledMemoClass} centered blue-alert`}>
             This event has already been scheduled and is no longer accepting RSVPs.
           </div>
           <div className={`${rsvpClass}`}>

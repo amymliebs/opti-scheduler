@@ -181,8 +181,15 @@ const EventShowContainer = (props) => {
     schedulingButton = <button onClick={handleTextSend} className="main-button">TEXT A REMINDER</button>
   }
 
+  let unscheduledClass = "hidden"
+  let unscheduledInvitees = "Unable to schedule "
+
   let scheduledMeetings = invitees.map((inviteeDetails) => {
     if (!remaining_availabilities && inviteeDetails) {
+      if (!inviteeDetails.invitee.scheduledSlot) {
+        unscheduledInvitees += inviteeDetails.invitee.name
+        unscheduledClass = "visible"
+      }
       return(
         <ScheduledTimeTile
           key={inviteeDetails.invitee.inviteeId}
@@ -239,6 +246,9 @@ const EventShowContainer = (props) => {
                     {scheduledMeetings}
                   </tbody>
                 </table>
+              </div>
+              <div className={`${unscheduledClass} blue-alert`}>
+                {unscheduledInvitees}
               </div>
             </div>
           </div>
