@@ -26,11 +26,6 @@
   margin-bottom: 20px;
 }
 
-.schedule-pending {
-  margin-top: 60px;
-  font-size: 20px;
-}
-
 .left-column {
   margin-top: 20px;
   width: 40%;
@@ -96,8 +91,22 @@
   margin: 0 auto
 }
 
+.awaiting-details {
+  margin-top: 40px
+}
+
 #awaiting-rsvps {
-  margin-top: 40px;
-  font-size: 20px;
-  color: $button-blue
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #2db7f5;
+}
+
+#awaiting-invitees {
+  font-size: 18px;
+}
+
+.progress-bar {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px
 }

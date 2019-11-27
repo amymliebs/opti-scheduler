@@ -4,6 +4,7 @@ import humps from 'humps'
 import EventNameTile from './EventNameTile'
 import EventDetailsTile from './EventDetailsTile'
 import ScheduledTimeTile from './ScheduledTimeTile'
+import { Line } from 'rc-progress'
 
 const EventShowContainer = (props) => {
   const[event, setEvent] = useState({})
@@ -172,27 +173,71 @@ const EventShowContainer = (props) => {
     })
   })
 
-  if (no_rsvps) {
-    schedulingButton = <div id="awaiting-rsvps">Awaiting RSVPs</div>
-  } else if (remaining_availabilities) {
-    schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE</button>
+  let rsvpProgress
+  let awaitingRsvp = []
+  let awaitingRsvpCount = 0
+  let totalInvitees = invitees.length
+  invitees.forEach((inviteeDetails) => {
+    if (!inviteeDetails.inviteeEmail) {
+      awaitingRsvpCount += 1
+    } else {
+      awaitingRsvp.push(inviteeDetails.inviteeEmail)
+    }
+  })
+
+  let percentRsvped = (awaitingRsvpCount / totalInvitees) * 100
+
+  let listedAwaitingRsvp
+  if (awaitingRsvp.length > 1) {
+    const lastAwaiting = awaitingRsvp.pop()
+    listedAwaitingRsvp = awaitingRsvp.join(', ') + ' and ' + lastAwaiting
+  }
+
+  if (no_rsvps || remaining_availabilities) {
+    rsvpProgress =
+      <div className="centered awaiting-details">
+        <Line percent={percentRsvped} strokeWidth="8" strokeColor="#2db7f5" trailWidth="8" className="progress-bar"/>
+        <div id="awaiting-rsvps">{awaitingRsvpCount} out of {totalInvitees} Invitees have RSVPed</div>
+        <div id="awaiting-invitees">Awaiting RSVPs from {listedAwaitingRsvp}</div>
+      </div>
   } else {
     tableClass = "visible"
     schedulingButton = <button onClick={handleTextSend} className="main-button">TEXT A REMINDER</button>
   }
 
+  if (remaining_availabilities) {
+      schedulingButton = <button onClick={handleScheduleCreation} className="main-button middle-button">CREATE MY SCHEDULE</button>
+  }
+
+  let unscheduledClass = "hidden"
+  let unscheduledInvitees = []
+
   let scheduledMeetings = invitees.map((inviteeDetails) => {
     if (!remaining_availabilities && inviteeDetails) {
-      return(
-        <ScheduledTimeTile
-          key={inviteeDetails.invitee.inviteeId}
-          name={inviteeDetails.invitee.name}
-          email={inviteeDetails.invitee.email}
-          timeslot={inviteeDetails.invitee.scheduledSlot}
-        />
-      )
+      if (inviteeDetails.inviteeEmail) {
+        if (!no_rsvps) {
+          unscheduledInvitees.push(inviteeDetails.inviteeEmail)
+          unscheduledClass = "visible"
+        }
+      } else {
+        return(
+          <ScheduledTimeTile
+            key={inviteeDetails.invitee.inviteeId}
+            name={inviteeDetails.invitee.name}
+            email={inviteeDetails.invitee.email}
+            timeslot={inviteeDetails.invitee.scheduledSlot}
+          />
+        )
+      }
     }
   })
+
+  let listedUnscheduled
+  if (unscheduledInvitees.length > 1) {
+    const last = unscheduledInvitees.pop()
+    listedUnscheduled = unscheduledInvitees.join(', ') + ' and ' + last
+  }
+  let unscheduledNotice = <div className={`${unscheduledClass} blue-alert-small`}> Unable to schedule the following invitees:&ensp; {listedUnscheduled} </div>
 
   return(
     <div className="main-background">
@@ -215,13 +260,11 @@ const EventShowContainer = (props) => {
         <div className="seven wide column container">
           <div className="complete-schedule">
             <div className="secondary-subheader">
-              <b>Complete Schedule</b>
-            </div>
-            <div className="schedule-pending centered">
-              Your schedule will appear here once it has been set.
+              <b>Schedule</b>
             </div>
             <div className="ui two column centered grid">
               <div>
+                {rsvpProgress}
                 {schedulingButton}
               </div>
               <div className="gap">
@@ -240,6 +283,7 @@ const EventShowContainer = (props) => {
                   </tbody>
                 </table>
               </div>
+              {unscheduledNotice}
             </div>
           </div>
         </div>
