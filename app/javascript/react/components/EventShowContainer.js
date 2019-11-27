@@ -196,7 +196,7 @@ const EventShowContainer = (props) => {
   if (no_rsvps || remaining_availabilities) {
     rsvpProgress =
       <div className="centered awaiting-details">
-        <Line percent={percentRsvped} strokeWidth="8" strokeColor="#2db7f5" trailWidth="8" className="progress-bar"/>
+        <Line percent={percentRsvped} strokeWidth="4" strokeColor="#2db7f5" trailWidth="4" className="progress-bar"/>
         <div id="awaiting-rsvps">{awaitingRsvpCount} out of {totalInvitees} Invitees have RSVPed</div>
         <div id="awaiting-invitees">Awaiting RSVPs from {listedAwaitingRsvp}</div>
       </div>
