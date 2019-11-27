@@ -4,6 +4,7 @@ import humps from 'humps'
 import EventNameTile from './EventNameTile'
 import EventDetailsTile from './EventDetailsTile'
 import ScheduledTimeTile from './ScheduledTimeTile'
+import { Line } from 'rc-progress'
 
 const EventShowContainer = (props) => {
   const[event, setEvent] = useState({})
@@ -173,7 +174,11 @@ const EventShowContainer = (props) => {
   })
 
   if (no_rsvps) {
-    schedulingButton = <div id="awaiting-rsvps">Awaiting RSVPs</div>
+    schedulingButton =
+      <div className="centered">
+        <div id="awaiting-rsvps">Awaiting RSVPs from</div>
+        <Line percent="25" strokeWidth="8" strokeColor="#2db7f5" trailWidth="8" className="progress-bar"/>
+      </div>
   } else if (remaining_availabilities) {
     schedulingButton = <button onClick={handleScheduleCreation} className="main-button">CREATE MY SCHEDULE</button>
   } else {
@@ -205,7 +210,6 @@ const EventShowContainer = (props) => {
   })
 
   let listedUnscheduled
-  let unscheduledList = unscheduledInvitees.join(', ')
   if (unscheduledInvitees.length > 1) {
     const last = unscheduledInvitees.pop()
     listedUnscheduled = unscheduledInvitees.join(', ') + ' and ' + last

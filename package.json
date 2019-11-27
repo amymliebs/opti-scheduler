@@ -20,6 +20,7 @@
     "babel-loader": "^8.0.6",
     "humps": "^2.0.1",
     "prop-types": "~15.6.0",
+    "rc-progress": "^2.5.2",
     "react": "~16.8.0",
     "react-checkbox-group": "^5.0.2",
     "react-datepicker": "^2.9.6",
